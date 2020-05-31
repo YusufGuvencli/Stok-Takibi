@@ -11,7 +11,7 @@ namespace StokTakibi.Helper.Form_Helpers
             switch (enums)
             {
                 case CudEnums.IslemBasarili:
-                    XtraMessageBox.Show("İşlem başarıyla gerçekleşti.", "HATA",
+                    XtraMessageBox.Show("İşlem başarıyla gerçekleşti.", "BİLGİ",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 case CudEnums.EksikParametreHatasi:
@@ -37,7 +37,7 @@ namespace StokTakibi.Helper.Form_Helpers
 
         public static void ShowInfo(string mesaj)
         {
-            XtraMessageBox.Show(mesaj, "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show(mesaj, "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static void ClearTextboxes(System.Windows.Forms.Control.ControlCollection ctrls)

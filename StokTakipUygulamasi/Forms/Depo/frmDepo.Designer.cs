@@ -208,13 +208,16 @@
             this.silToolStripMenuItem1.Text = "Sil";
             this.silToolStripMenuItem1.Click += new System.EventHandler(this.silToolStripMenuItem1_Click);
             // 
-            // DepoForm
+            // frmDepo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 490);
             this.Controls.Add(this.panel1);
-            this.Name = "DepoForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmDepo";
             this.Text = "Depo Ekle";
             this.Load += new System.EventHandler(this.DepoForm_Load);
             this.panel1.ResumeLayout(false);

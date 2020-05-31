@@ -1,10 +1,12 @@
 ﻿using StokTakibi.DAL.EntitiyFramework.UnitOfWork;
 using StokTakibi.DAL.Operations.Depo;
 using StokTakibi.DAL.Operations.Kullanici;
+using StokTakibi.DAL.Operations.Raporlar;
 using StokTakibi.DAL.Operations.Stok;
 using StokTakibi.Entities.Depo;
 using StokTakibi.Entities.Kullanici;
 using StokTakibi.Entities.Raporlar;
+using StokTakibi.Entities.SqlView;
 using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.Entities.Stok_Karti;
 
@@ -283,6 +285,25 @@ FROM            dbo.Stok_Hareketleri AS H INNER JOIN
                          dbo.Stok_Hareket_Tipi AS tip ON tip.HareketDurumId = H.HareketDurumId INNER JOIN
                          dbo.Stok_Kartlari AS K ON K.StokKartId = H.StokKartId";
             _uow.GenericRepository<StokHareketleriRaporDto>().SqlQuery(stokHareketRaporu);
+            #endregion
+
+            #region
+            string stokDurumRaporu = @"CREATE VIEW [dbo].[vw_StokDurumRaporu]
+AS
+WITH cte AS (SELECT        StokKartId,
+                                                          (SELECT        SUM(Miktar) AS Expr1
+                                                            FROM            dbo.Stok_Hareketleri AS H1
+                                                            WHERE        (HareketDurumId = 1) AND (StokKartId = H.StokKartId) AND (AktifMi = 1)) AS ToplamGiris,
+                                                          (SELECT        SUM(Miktar) AS Expr1
+                                                            FROM            dbo.Stok_Hareketleri AS H1
+                                                            WHERE        (HareketDurumId = 2) AND (StokKartId = H.StokKartId) AND (AktifMi = 1)) AS ToplamCikis
+                             FROM            dbo.Stok_Hareketleri AS H
+                             GROUP BY StokKartId)
+    SELECT        K.StokAdi, K.StokKodu, D.DepoAdi, D.DepoKodu, ISNULL(cte_1.ToplamGiris, 0) AS MevcutStok, ISNULL(cte_1.ToplamCikis, 0) AS CikanStok
+     FROM            cte AS cte_1 INNER JOIN
+                              dbo.Stok_Kartlari AS K ON K.StokKartId = cte_1.StokKartId INNER JOIN
+                              dbo.Depolar AS D ON D.DepoId = K.DepoId";
+            _uow.GenericRepository<StokHareketView>().SqlQuery(stokDurumRaporu);
             #endregion
         }
 

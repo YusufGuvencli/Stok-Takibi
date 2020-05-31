@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             this.dtpKayitTarihi = new DevExpress.XtraEditors.DateEdit();
             this.btnResmiKaldir = new DevExpress.XtraEditors.SimpleButton();
             this.btnResimSec = new DevExpress.XtraEditors.SimpleButton();
@@ -50,7 +51,6 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties.CalendarTimeProperties)).BeginInit();
@@ -93,6 +93,16 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(346, 365);
             this.panelControl1.TabIndex = 0;
+            // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.Location = new System.Drawing.Point(81, 293);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(87, 36);
+            this.btnDuzenle.TabIndex = 12;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Visible = false;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // dtpKayitTarihi
             // 
@@ -279,22 +289,15 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Stok Kodu :";
             // 
-            // btnDuzenle
-            // 
-            this.btnDuzenle.Location = new System.Drawing.Point(81, 293);
-            this.btnDuzenle.Name = "btnDuzenle";
-            this.btnDuzenle.Size = new System.Drawing.Size(87, 36);
-            this.btnDuzenle.TabIndex = 12;
-            this.btnDuzenle.Text = "Düzenle";
-            this.btnDuzenle.Visible = false;
-            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
-            // 
             // frmStokEkleDuzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(373, 406);
             this.Controls.Add(this.panelControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmStokEkleDuzenle";
             this.Text = "Yeni Stok Ekle";
             this.Load += new System.EventHandler(this.frmYeniStok_Load);
