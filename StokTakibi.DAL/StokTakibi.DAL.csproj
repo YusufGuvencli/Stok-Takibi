@@ -64,6 +64,7 @@
     <Compile Include="EntitiyFramework\UnitOfWork\UnitOfWorkBase.cs" />
     <Compile Include="Operations\Depo\DepoDal.cs" />
     <Compile Include="Operations\Kullanici\KullaniciDal.cs" />
+    <Compile Include="Operations\Raporlar\StokHareketRaporuDal.cs" />
     <Compile Include="Operations\Stok\StokHareketDal.cs" />
     <Compile Include="Operations\Stok\StokHareketTipiDal.cs" />
     <Compile Include="Operations\Stok\StokKartlariDal.cs" />

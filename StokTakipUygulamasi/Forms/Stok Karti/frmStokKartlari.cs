@@ -9,16 +9,20 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
     public partial class frmStokKartlari : DevExpress.XtraEditors.XtraForm
     {
         StokKartlariBll stokKartlariBLL;
-        public frmStokKartlari()
+        int kullaniciId;
+        public frmStokKartlari(int _kullaniciId)
         {
             InitializeComponent();
             stokKartlariBLL = new StokKartlariBll();
+            kullaniciId = _kullaniciId;
+
         }
 
         private void stokKartıEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmStokEkleDuzenle yeniStok = new frmStokEkleDuzenle();
+            frmStokEkleDuzenle yeniStok = new frmStokEkleDuzenle(kullaniciId);
             yeniStok.ShowDialog();
+            StokKartlariGetir();
         }
         private void StokKartlariGetir()
         {
@@ -34,7 +38,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
             if (gridView1.SelectedRowsCount == 1)
             {
                 StokKartiDto stokKarti = (StokKartiDto)gridView1.GetRow(gridView1.FocusedRowHandle);
-                frmStokEkleDuzenle frmStokEkleDuzenle = new frmStokEkleDuzenle(stokKarti);
+                frmStokEkleDuzenle frmStokEkleDuzenle = new frmStokEkleDuzenle(kullaniciId, stokKarti);
                 frmStokEkleDuzenle.ShowDialog();
                 StokKartlariGetir();
             }

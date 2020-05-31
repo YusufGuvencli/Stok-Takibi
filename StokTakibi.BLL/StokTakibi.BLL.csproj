@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Business Operations\DepoBll.cs" />
     <Compile Include="Business Operations\KullaniciBll.cs" />
+    <Compile Include="Business Operations\Raporlar\StokHareketRaporBll.cs" />
     <Compile Include="Business Operations\Stok Kartlari\StokKartlariBll.cs" />
     <Compile Include="Business Operations\StokHareketleriBLL.cs" />
     <Compile Include="Business Operations\StokHareketTipiBLL.cs" />

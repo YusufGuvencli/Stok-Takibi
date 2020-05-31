@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dtpKayitTarihi = new DevExpress.XtraEditors.DateEdit();
             this.btnResmiKaldir = new DevExpress.XtraEditors.SimpleButton();
             this.btnResimSec = new DevExpress.XtraEditors.SimpleButton();
             this.lookUpDepo = new DevExpress.XtraEditors.LookUpEdit();
@@ -45,11 +46,15 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDepo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -63,6 +68,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnDuzenle);
+            this.panelControl1.Controls.Add(this.dtpKayitTarihi);
             this.panelControl1.Controls.Add(this.btnResmiKaldir);
             this.panelControl1.Controls.Add(this.btnResimSec);
             this.panelControl1.Controls.Add(this.lookUpDepo);
@@ -78,17 +85,30 @@
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl4);
+            this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Location = new System.Drawing.Point(12, 12);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(346, 327);
+            this.panelControl1.Size = new System.Drawing.Size(346, 365);
             this.panelControl1.TabIndex = 0;
+            // 
+            // dtpKayitTarihi
+            // 
+            this.dtpKayitTarihi.EditValue = null;
+            this.dtpKayitTarihi.Location = new System.Drawing.Point(82, 99);
+            this.dtpKayitTarihi.Name = "dtpKayitTarihi";
+            this.dtpKayitTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpKayitTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpKayitTarihi.Size = new System.Drawing.Size(232, 20);
+            this.dtpKayitTarihi.TabIndex = 11;
             // 
             // btnResmiKaldir
             // 
-            this.btnResmiKaldir.Location = new System.Drawing.Point(222, 219);
+            this.btnResmiKaldir.Location = new System.Drawing.Point(222, 225);
             this.btnResmiKaldir.Name = "btnResmiKaldir";
             this.btnResmiKaldir.Size = new System.Drawing.Size(96, 31);
             this.btnResmiKaldir.TabIndex = 8;
@@ -97,7 +117,7 @@
             // 
             // btnResimSec
             // 
-            this.btnResimSec.Location = new System.Drawing.Point(222, 173);
+            this.btnResimSec.Location = new System.Drawing.Point(222, 179);
             this.btnResimSec.Name = "btnResimSec";
             this.btnResimSec.Size = new System.Drawing.Size(96, 31);
             this.btnResimSec.TabIndex = 7;
@@ -106,7 +126,7 @@
             // 
             // lookUpDepo
             // 
-            this.lookUpDepo.Location = new System.Drawing.Point(82, 105);
+            this.lookUpDepo.Location = new System.Drawing.Point(82, 125);
             this.lookUpDepo.Name = "lookUpDepo";
             this.lookUpDepo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -120,7 +140,7 @@
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.pictureBox1);
-            this.panelControl2.Location = new System.Drawing.Point(84, 171);
+            this.panelControl2.Location = new System.Drawing.Point(84, 177);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(134, 97);
             this.panelControl2.TabIndex = 6;
@@ -137,7 +157,7 @@
             // 
             // btnKapat
             // 
-            this.btnKapat.Location = new System.Drawing.Point(232, 274);
+            this.btnKapat.Location = new System.Drawing.Point(231, 293);
             this.btnKapat.Name = "btnKapat";
             this.btnKapat.Size = new System.Drawing.Size(87, 36);
             this.btnKapat.TabIndex = 10;
@@ -146,7 +166,7 @@
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Location = new System.Drawing.Point(82, 274);
+            this.btnKaydet.Location = new System.Drawing.Point(81, 293);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(87, 36);
             this.btnKaydet.TabIndex = 9;
@@ -183,7 +203,7 @@
             // 
             // txtAciklama
             // 
-            this.txtAciklama.Location = new System.Drawing.Point(82, 131);
+            this.txtAciklama.Location = new System.Drawing.Point(81, 151);
             this.txtAciklama.Name = "txtAciklama";
             this.txtAciklama.Size = new System.Drawing.Size(237, 20);
             this.txtAciklama.TabIndex = 5;
@@ -197,7 +217,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(27, 173);
+            this.labelControl6.Location = new System.Drawing.Point(27, 179);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(35, 13);
             this.labelControl6.TabIndex = 0;
@@ -205,7 +225,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(41, 108);
+            this.labelControl7.Location = new System.Drawing.Point(41, 128);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(32, 13);
             this.labelControl7.TabIndex = 0;
@@ -213,7 +233,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(27, 134);
+            this.labelControl5.Location = new System.Drawing.Point(27, 154);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(48, 13);
             this.labelControl5.TabIndex = 0;
@@ -226,6 +246,14 @@
             this.labelControl4.Size = new System.Drawing.Size(31, 13);
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "Fiyat :";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(13, 106);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(60, 13);
+            this.labelControl8.TabIndex = 0;
+            this.labelControl8.Text = "Kayit Tarihi :";
             // 
             // labelControl3
             // 
@@ -251,11 +279,21 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Stok Kodu :";
             // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.Location = new System.Drawing.Point(81, 293);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(87, 36);
+            this.btnDuzenle.TabIndex = 12;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Visible = false;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
+            // 
             // frmStokEkleDuzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 348);
+            this.ClientSize = new System.Drawing.Size(373, 406);
             this.Controls.Add(this.panelControl1);
             this.Name = "frmStokEkleDuzenle";
             this.Text = "Yeni Stok Ekle";
@@ -263,6 +301,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDepo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -298,5 +338,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton btnResimSec;
         private DevExpress.XtraEditors.SimpleButton btnResmiKaldir;
+        private DevExpress.XtraEditors.DateEdit dtpKayitTarihi;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.SimpleButton btnDuzenle;
     }
 }

@@ -49,5 +49,13 @@ namespace StokTakibi.Helper.Form_Helpers
                 ClearTextboxes(ctrl.Controls);
             }
         }
+
+        public static bool TextNullCheck(string text)
+        {
+            if (!string.IsNullOrWhiteSpace(text))
+                return true;
+            else 
+                return false;
+        }
     }
 }

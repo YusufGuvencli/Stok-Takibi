@@ -1,5 +1,4 @@
-﻿using StokTakibi.Entities.Depo;
-using StokTakibi.Entities.Kullanici;
+﻿using StokTakibi.Entities.Kullanici;
 using StokTakibi.Entities.Stok_Karti;
 using System;
 using System.Collections.Generic;
@@ -14,18 +13,22 @@ namespace StokTakibi.Entities.Stok_Hareketleri
         [Key]
         public int HareketId { get; set; }
         [Required, MaxLength(15)]
-        public string FisNumarasi { get; set; }
+        public string FisNo { get; set; }
         [Required]
-        public int GirisCikisMiktari { get; set; }
+        public int Miktar { get; set; }
         [Required]
-        public int GirisCikisDurum { get; set; }
+        public int HareketDurumId { get; set; }
+        [Required]
+        public int StokKartId { get; set; }
         [Required]
         public DateTime KayitTarihi { get; set; }
         [Required]
         public int KullaniciId { get; set; }
-        public KullaniciDto Kullanici { get; set; }
-        public DepoDto Depo { get; set; }
+        [Required]
         public bool AktifMi { get; set; }
-        public List<StokKartiDto> StokKartiDto { get; set; }
+        public KullaniciDto kullanici { get; set; }     
+   
+        public StokHareketTipiDto stokHareketTipi { get; set; }
+       
     }
 }

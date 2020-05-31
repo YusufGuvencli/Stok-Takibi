@@ -21,6 +21,6 @@ namespace StokTakibi.Entities.Depo
         [Required,MaxLength(25)]
         public string DepoAdi { get; set; }
         public bool AktifMi { get; set; }
-        public List<StokHareketleriDto> StokHareketleri { get; set; }
+        public List<StokKartiDto> stokKartiDto { get; set; }
     }
 }

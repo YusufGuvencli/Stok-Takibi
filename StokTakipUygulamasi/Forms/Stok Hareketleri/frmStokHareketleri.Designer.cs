@@ -35,6 +35,12 @@
             this.kapatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grdStokHareketleri = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colFisNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMiktar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHareketTipi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKayitTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStokHareketleri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -67,6 +73,7 @@
             this.düzenleToolStripMenuItem.Name = "düzenleToolStripMenuItem";
             this.düzenleToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.düzenleToolStripMenuItem.Text = "Düzenle";
+            this.düzenleToolStripMenuItem.Click += new System.EventHandler(this.düzenleToolStripMenuItem_Click);
             // 
             // silToolStripMenuItem
             // 
@@ -74,6 +81,7 @@
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
             this.silToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.silToolStripMenuItem.Text = "Sil";
+            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
             // 
             // kapatToolStripMenuItem
             // 
@@ -94,9 +102,64 @@
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colFisNo,
+            this.colMiktar,
+            this.colHareketTipi,
+            this.colStokKodu,
+            this.colStokAdi,
+            this.colKayitTarihi});
             this.gridView1.GridControl = this.grdStokHareketleri;
             this.gridView1.GroupPanelText = " ";
             this.gridView1.Name = "gridView1";
+            // 
+            // colFisNo
+            // 
+            this.colFisNo.Caption = "FisNo";
+            this.colFisNo.FieldName = "FisNo";
+            this.colFisNo.Name = "colFisNo";
+            this.colFisNo.Visible = true;
+            this.colFisNo.VisibleIndex = 0;
+            // 
+            // colMiktar
+            // 
+            this.colMiktar.Caption = "Miktar";
+            this.colMiktar.FieldName = "Miktar";
+            this.colMiktar.Name = "colMiktar";
+            this.colMiktar.Visible = true;
+            this.colMiktar.VisibleIndex = 1;
+            // 
+            // colHareketTipi
+            // 
+            this.colHareketTipi.Caption = "Hareket Tipi";
+            this.colHareketTipi.FieldName = "HareketTipi";
+            this.colHareketTipi.Name = "colHareketTipi";
+            this.colHareketTipi.Visible = true;
+            this.colHareketTipi.VisibleIndex = 2;
+            // 
+            // colStokKodu
+            // 
+            this.colStokKodu.Caption = "Stok Kodu";
+            this.colStokKodu.FieldName = "StokKodu";
+            this.colStokKodu.Name = "colStokKodu";
+            this.colStokKodu.Visible = true;
+            this.colStokKodu.VisibleIndex = 3;
+            // 
+            // colStokAdi
+            // 
+            this.colStokAdi.Caption = "Stok Adı";
+            this.colStokAdi.FieldName = "StokAdi";
+            this.colStokAdi.Name = "colStokAdi";
+            this.colStokAdi.Visible = true;
+            this.colStokAdi.VisibleIndex = 4;
+            // 
+            // colKayitTarihi
+            // 
+            this.colKayitTarihi.Caption = "Kayıt Tarihi";
+            this.colKayitTarihi.FieldName = "KayitTarihi";
+            this.colKayitTarihi.Name = "colKayitTarihi";
+            this.colKayitTarihi.Visible = true;
+            this.colKayitTarihi.VisibleIndex = 5;
             // 
             // frmStokHareketleri
             // 
@@ -126,5 +189,11 @@
         private System.Windows.Forms.ToolStripMenuItem kapatToolStripMenuItem;
         private DevExpress.XtraGrid.GridControl grdStokHareketleri;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colFisNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colMiktar;
+        private DevExpress.XtraGrid.Columns.GridColumn colHareketTipi;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokAdi;
+        private DevExpress.XtraGrid.Columns.GridColumn colKayitTarihi;
     }
 }

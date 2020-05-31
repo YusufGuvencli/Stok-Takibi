@@ -47,9 +47,9 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
             {
                 if (!string.IsNullOrEmpty(stokKarti.StokKodu)
                 && !string.IsNullOrEmpty(stokKarti.StokAdi)
-                && !string.IsNullOrEmpty(stokKarti.Kdv.ToString())
-                && !string.IsNullOrEmpty(stokKarti.Fiyat.ToString())
-                && !string.IsNullOrEmpty(stokKarti.DepoId.ToString()))
+                && stokKarti.Kdv != -1
+                && stokKarti.Fiyat != -1
+                && stokKarti.DepoId != -1)
                 {
                     int result = stokKartlariDAL.StokKartiEkle(stokKarti);
                     if (result > 0)
@@ -76,12 +76,11 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 if (!string.IsNullOrEmpty(stokKarti.StokKodu)
-                   && !string.IsNullOrEmpty(stokKarti.StokAdi)
-                   && !string.IsNullOrEmpty(stokKarti.Kdv.ToString())
-                   && !string.IsNullOrEmpty(stokKarti.Fiyat.ToString())
-                   && !string.IsNullOrEmpty(stokKarti.DepoId.ToString()))
+                    && !string.IsNullOrEmpty(stokKarti.StokAdi)
+                    && stokKarti.Kdv != -1
+                    && stokKarti.Fiyat != -1
+                    && stokKarti.DepoId != -1)
                 {
-                    stokKarti.AktifMi = false;
                     int result = stokKartlariDAL.StokKartiDuzenle(stokKarti);
                     if (result > 0)
                     {

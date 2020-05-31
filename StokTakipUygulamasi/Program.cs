@@ -1,6 +1,7 @@
 ﻿using StokTakipUygulamasi.Forms;
 using StokTakipUygulamasi.Forms.Stok_Hareketleri;
 using StokTakipUygulamasi.Forms.Users;
+using StokTakipUygulamasi.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace StokTakipUygulamasi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GirisFormu());
+            Application.Run(new frmStokHareketRaporu());
         }
     }
 }

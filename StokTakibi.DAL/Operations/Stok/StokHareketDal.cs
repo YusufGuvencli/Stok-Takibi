@@ -1,5 +1,6 @@
 ﻿using StokTakibi.DAL.EntitiyFramework;
 using StokTakibi.DAL.EntitiyFramework.UnitOfWork;
+using StokTakibi.Entities.SqlView;
 using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.Helper.TryCatch;
 using System;
@@ -28,12 +29,12 @@ namespace StokTakibi.DAL.Operations.Stok
         /// Hata alması durumunda null değer döndürür.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<StokHareketleriDto> StokHareketleriniGetir()
+        public IEnumerable<StokHareketView> StokHareketleriniGetir()
         {
-            IEnumerable<StokHareketleriDto> lstStokHareketleri = null;
+            IEnumerable<StokHareketView> lstStokHareketleri = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                lstStokHareketleri = _uow.GenericRepository<StokHareketleriDto>().Where(x => x.AktifMi == true);
+                lstStokHareketleri = _uow.GenericRepository<StokHareketView>().SqlQuery("SELECT * FROM vw_StokHareketleri", true);
             }, MethodBase.GetCurrentMethod().Name);
 
             return lstStokHareketleri;
@@ -50,10 +51,11 @@ namespace StokTakibi.DAL.Operations.Stok
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 result = _uow.GenericRepository<StokHareketleriDto>().InsertWithProcedure(
-                     "Insert_StokHareketleri @FisNumarasi,@GirisCikisMiktari,@GirisCikisDurum,@KayitTarihi,@KullaniciId,@DepoId,@AktifMi",
-                     new SqlParameter("@FisNumarasi", SqlDbType.NVarChar) { Value = stokHareketleri.FisNumarasi },
-                     new SqlParameter("@GirisCikisMiktari", SqlDbType.Int) { Value = stokHareketleri.GirisCikisMiktari },
-                     new SqlParameter("@GirisCikisDurum", SqlDbType.Int) { Value = stokHareketleri.GirisCikisDurum },
+                     "Insert_StokHareketleri @FisNo,@Miktar,@HareketDurumId,@StokKartId,@KayitTarihi,@KullaniciId,@AktifMi",
+                     new SqlParameter("@FisNo", SqlDbType.NVarChar) { Value = stokHareketleri.FisNo },
+                     new SqlParameter("@Miktar", SqlDbType.Int) { Value = stokHareketleri.Miktar },
+                     new SqlParameter("@HareketDurumId", SqlDbType.Int) { Value = stokHareketleri.HareketDurumId },
+                     new SqlParameter("@StokKartId", SqlDbType.Int) { Value = stokHareketleri.StokKartId },
                      new SqlParameter("@KayitTarihi", SqlDbType.DateTime) { Value = stokHareketleri.KayitTarihi },
                      new SqlParameter("@KullaniciId", SqlDbType.Int) { Value = stokHareketleri.KullaniciId },
                      new SqlParameter("@AktifMi", SqlDbType.Bit) { Value = stokHareketleri.AktifMi });
@@ -74,8 +76,7 @@ namespace StokTakibi.DAL.Operations.Stok
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 result = _uow.GenericRepository<StokHareketleriDto>().Update(stokHareketleri);
-                _uow.Commit();
-                _uow.Dispose();
+                _uow.Commit();               
             }, MethodBase.GetCurrentMethod().Name);
             return result;
         }
@@ -91,11 +92,28 @@ namespace StokTakibi.DAL.Operations.Stok
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 result = _uow.GenericRepository<StokHareketleriDto>().Update(stokHareketleri);
-                _uow.Commit();
-                _uow.Dispose();
+                _uow.Commit();             
             }, MethodBase.GetCurrentMethod().Name);
 
             return result;
+        }
+
+        /// <summary>
+        /// Id tipinde değer alır ve veritabanına sorgu atar. 
+        /// Bulduğu değeri StokHareketleriDto tipinde döner.
+        /// Hata alırsa null değer döndürür.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public StokHareketleriDto StokHareketiBul(int Id)
+        {
+            StokHareketleriDto stokHareketleriDto = null;
+            DynamicTryCatch.TryCatchLogla(() =>
+            {
+                stokHareketleriDto = _uow.GenericRepository<StokHareketleriDto>().GetById(Id);
+            }, MethodBase.GetCurrentMethod().Name);
+
+            return stokHareketleriDto;
         }
     }
 }

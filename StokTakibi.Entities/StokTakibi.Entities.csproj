@@ -48,6 +48,8 @@
     <Compile Include="Depo\DepoDto.cs" />
     <Compile Include="Kullanici\KullaniciDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Raporlar\StokHareketleriRaporDto.cs" />
+    <Compile Include="SqlView\StokHareketView.cs" />
     <Compile Include="Stok_Hareketleri\StokHareketleriDto.cs" />
     <Compile Include="Stok_Hareketleri\StokHareketTipiDto.cs" />
     <Compile Include="Stok_Karti\StokKartiDto.cs" />

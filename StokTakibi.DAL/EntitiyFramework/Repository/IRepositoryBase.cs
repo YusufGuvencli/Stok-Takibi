@@ -20,5 +20,6 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
         int RemoveRange(IEnumerable<T> entity);
         int InsertWithProcedure(string query, params object[] parameters);
         void SqlQuery(string query);
+        IEnumerable<T> SqlQuery(string query,bool donusDegeri);
     }
 }

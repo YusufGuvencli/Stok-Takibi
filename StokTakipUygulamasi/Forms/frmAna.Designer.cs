@@ -31,10 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.stokİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stokHareketleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depoİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depoEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depoGirişÇıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stokHareketleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.depoİşlemleriToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(867, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,8 +62,15 @@
             // 
             this.stokEkleToolStripMenuItem.Name = "stokEkleToolStripMenuItem";
             this.stokEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stokEkleToolStripMenuItem.Text = "Stok Ekle";
+            this.stokEkleToolStripMenuItem.Text = "Stok Islemleri";
             this.stokEkleToolStripMenuItem.Click += new System.EventHandler(this.stokEkleToolStripMenuItem_Click);
+            // 
+            // stokHareketleriToolStripMenuItem
+            // 
+            this.stokHareketleriToolStripMenuItem.Name = "stokHareketleriToolStripMenuItem";
+            this.stokHareketleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stokHareketleriToolStripMenuItem.Text = "Stok Hareketleri";
+            this.stokHareketleriToolStripMenuItem.Click += new System.EventHandler(this.stokHareketleriToolStripMenuItem_Click);
             // 
             // depoİşlemleriToolStripMenuItem
             // 
@@ -87,18 +94,11 @@
             this.depoGirişÇıkışToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.depoGirişÇıkışToolStripMenuItem.Text = "Depo Giriş/Çıkış";
             // 
-            // stokHareketleriToolStripMenuItem
-            // 
-            this.stokHareketleriToolStripMenuItem.Name = "stokHareketleriToolStripMenuItem";
-            this.stokHareketleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stokHareketleriToolStripMenuItem.Text = "Stok Hareketleri";
-            this.stokHareketleriToolStripMenuItem.Click += new System.EventHandler(this.stokHareketleriToolStripMenuItem_Click);
-            // 
             // frmAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 411);
+            this.ClientSize = new System.Drawing.Size(867, 497);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmAna";
             this.Text = "AnaForm";

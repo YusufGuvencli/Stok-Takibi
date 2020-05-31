@@ -32,26 +32,19 @@ namespace StokTakipUygulamasi.Forms.Users
             };
 
             kullaniciBLL = new KullaniciBll();
-            LoginEnums enums = kullaniciBLL.KullaniciGiris(kullanici);
-           
-            switch (enums)
+            int kullaniciId = kullaniciBLL.KullaniciGiris(kullanici);
+
+            if (kullaniciId > 0)
             {
-                case LoginEnums.GirisBasarili:
-                    frmAna anaForm = new frmAna();
-                    anaForm.Show();
-                    this.Hide();
-                    break;
-                case LoginEnums.KullaniciBulunamadi:
-                    FormHelpers.ShowWarning("Kullanıcı adı ya da şifrenizi yanlış girdiniz.");
-                    FormHelpers.ClearTextboxes(this.Controls);
-                    txtKullaniciAdi.Focus();
-                    break;
-                case LoginEnums.EksikParametreHatasi:
-                    FormHelpers.ShowWarning("Kullanıcı adı veya şifre boş alanını doldurmadınız.");
-                    break;
-                default:
-                    break;
+                frmAna frmAna = new frmAna(kullaniciId);
+                frmAna.Show();
+                this.Hide();
             }
+            else
+            {
+                FormHelpers.ShowWarning("Kullanıcı adı ya da şifreyi yanlış girdiniz!");
+            }
+            
         }
         private void BeniHatirla()
         {

@@ -4,6 +4,7 @@ using StokTakibi.Entities.Kullanici;
 using StokTakibi.Helper.TryCatch;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Reflection;
 
 namespace StokTakibi.DAL.Operations.Kullanici
@@ -18,24 +19,26 @@ namespace StokTakibi.DAL.Operations.Kullanici
             _uow = new UnitOfWorkBase(context);
         }
         /// <summary>
-        /// Kullanıcı tipinde entity alarak aldığı entity'i veritabanina ekler.
-        /// Hata alması ya da değer bulamaması durumunda false döner.
+        /// Girilen şifreyi decode ederek kontrol eder. Giriş başarılı ise kullanıcı ID'si döner.
+        /// Hata alması ya da değer bulamaması durumunda -1 döner.
         /// </summary>
         /// <param name="kullanici"></param>
         /// <returns></returns>
-        public bool KullaniciGiris(KullaniciDto kullanici)
+        public int KullaniciGiris(KullaniciDto kullanici)
         {
-            bool result = false;
+            int kullaniciId = -1;
 
+            KullaniciDto kullaniciDto = new KullaniciDto();
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 PasswordHash passwordHash = new PasswordHash();
                 string password = passwordHash.Hash(kullanici.Sifre);
-                string test = passwordHash.Hash(kullanici.Sifre);
-                result = _uow.GenericRepository<KullaniciDto>().Any(x => x.KullaniciAdi == kullanici.KullaniciAdi
-                                                              && x.Sifre == password);
+
+                kullaniciDto = _uow.GenericRepository<KullaniciDto>().FirstOrDefault(x => x.KullaniciAdi == kullanici.KullaniciAdi && x.Sifre == password);
+                kullaniciId = kullaniciDto.KullaniciId;
+
             }, "StokTakibi.DAL.Operations.Kullanici.KullaniciGiris");
-            return result;
+            return kullaniciId;
         }
         public int KullaniciEkle(KullaniciDto kullanici)
         {

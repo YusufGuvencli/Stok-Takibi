@@ -32,7 +32,7 @@ namespace StokTakibi.DAL.Operations.Stok
             {
                 result = _uow.GenericRepository<StokHareketTipiDto>().InsertWithProcedure("" +
                       "exec Insert_Stok_Hareket_Tipi @StokHareketTipi,@AktifMi",
-                      new SqlParameter("@StokHareketTipi", SqlDbType.NVarChar) { Value = stokHareketleri.StokHareketTipi },
+                      new SqlParameter("@StokHareketTipi", SqlDbType.NVarChar) { Value = stokHareketleri.HareketTipi },
                       new SqlParameter("@AktifMi", SqlDbType.Bit) { Value = stokHareketleri.AktifMi }
  );
             }, MethodBase.GetCurrentMethod().Name);

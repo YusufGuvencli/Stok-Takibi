@@ -1,4 +1,5 @@
 ﻿using StokTakibi.Entities.Stok_Hareketleri;
+using StokTakibi.Entities.Stok_Karti;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,5 +21,6 @@ namespace StokTakibi.Entities.Kullanici
         public string Sifre { get; set; }
         public bool AktifMi { get; set; }
         public List<StokHareketleriDto> stokHareketleri { get; set; }
+        public List<StokKartiDto> stokKartlari { get; set; }
     }
 }

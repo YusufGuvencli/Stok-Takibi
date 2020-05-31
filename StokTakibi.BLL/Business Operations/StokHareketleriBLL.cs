@@ -1,4 +1,5 @@
 ﻿using StokTakibi.DAL.Operations.Stok;
+using StokTakibi.Entities.SqlView;
 using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.Helper.Enums;
 using StokTakibi.Helper.TryCatch;
@@ -23,9 +24,9 @@ namespace StokTakibi.BLL.Business_Operations
         /// Hata alması durumunda null değer döner.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<StokHareketleriDto> StokHareketleriniGetir()
+        public IEnumerable<StokHareketView> StokHareketleriniGetir()
         {
-            IEnumerable<StokHareketleriDto> lstStokHareketleri = null;
+            IEnumerable<StokHareketView> lstStokHareketleri = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 lstStokHareketleri = stokHareketDal.StokHareketleriniGetir();
@@ -41,11 +42,12 @@ namespace StokTakibi.BLL.Business_Operations
         public CudEnums StokHareketiEkle(StokHareketleriDto stokHareketleri)
         {
             CudEnums enums = CudEnums.EksikParametreHatasi;
-            if (!string.IsNullOrEmpty(stokHareketleri.FisNumarasi)
-                && !string.IsNullOrEmpty(stokHareketleri.GirisCikisMiktari.ToString())
-                && !string.IsNullOrEmpty(stokHareketleri.GirisCikisDurum.ToString())
+            if (!string.IsNullOrEmpty(stokHareketleri.FisNo)
+                && stokHareketleri.Miktar != -1
+                && stokHareketleri.HareketDurumId != -1
                 && stokHareketleri.KayitTarihi != DateTime.MinValue
-                && !string.IsNullOrEmpty(stokHareketleri.KullaniciId.ToString()))
+                && stokHareketleri.StokKartId != -1
+                && stokHareketleri.KullaniciId != 0)
             {
                 int result = stokHareketDal.StokHareketiEkle(stokHareketleri);
                 if (result > 0)
@@ -73,11 +75,12 @@ namespace StokTakibi.BLL.Business_Operations
             CudEnums enums = CudEnums.EksikParametreHatasi;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                if (!string.IsNullOrEmpty(stokHareketleri.FisNumarasi)
-                    && !string.IsNullOrEmpty(stokHareketleri.GirisCikisMiktari.ToString())
-                    && !string.IsNullOrEmpty(stokHareketleri.GirisCikisDurum.ToString())
+                if (!string.IsNullOrEmpty(stokHareketleri.FisNo)
+                    && stokHareketleri.Miktar != -1
+                    && stokHareketleri.HareketDurumId != -1
                     && stokHareketleri.KayitTarihi != DateTime.MinValue
-                    && !string.IsNullOrEmpty(stokHareketleri.KullaniciId.ToString()))
+                    && stokHareketleri.StokKartId != -1
+                    && stokHareketleri.KullaniciId != 0)
                 {
                     int result = stokHareketDal.StokHareketiGuncelle(stokHareketleri);
                     if (result > 0)
@@ -113,6 +116,23 @@ namespace StokTakibi.BLL.Business_Operations
             }, MethodBase.GetCurrentMethod().Name);
 
             return enums;
+        }
+
+        /// <summary>
+        /// Int tipinde Id alır ve StokHareketleriDto tipinde dönüş yapar..
+        /// Hata alması durumunda null döner.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public StokHareketleriDto StokHareketiBul(int Id)
+        {
+            StokHareketleriDto stokHareketleriDto = null;
+            DynamicTryCatch.TryCatchLogla(() => 
+            {
+                stokHareketleriDto = stokHareketDal.StokHareketiBul(Id);
+            }, MethodBase.GetCurrentMethod().Name);
+
+            return stokHareketleriDto;
         }
     }
 }

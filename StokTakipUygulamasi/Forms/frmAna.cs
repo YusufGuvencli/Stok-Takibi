@@ -16,9 +16,11 @@ namespace StokTakipUygulamasi.Forms
 {
     public partial class frmAna : DevExpress.XtraEditors.XtraForm
     {
-        public frmAna()
+        int kullaniciId;
+        public frmAna(int _kullaniciId)
         {
             InitializeComponent();
+            kullaniciId = _kullaniciId;
         }
 
         private void depoEkleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,13 +36,13 @@ namespace StokTakipUygulamasi.Forms
 
         private void stokEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmStokKartlari frmStokKartlari = new frmStokKartlari();
+            frmStokKartlari frmStokKartlari = new frmStokKartlari(kullaniciId);
             frmStokKartlari.Show();
         }
 
         private void stokHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmStokHareketleri frmStok = new frmStokHareketleri();
+            frmStokHareketleri frmStok = new frmStokHareketleri(kullaniciId);
             frmStok.Show();
         }
     }

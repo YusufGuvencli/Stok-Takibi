@@ -1,4 +1,6 @@
-﻿using StokTakibi.Helper.TryCatch;
+﻿using DevExpress.Utils.Extensions;
+using StokTakibi.Entities.SqlView;
+using StokTakibi.Helper.TryCatch;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -107,7 +109,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 result = context.Set<T>().ToList();
-            }, "StokTakibi.DAL.EntitiyFramework.Repository.GetAll");
+            }, MethodBase.GetCurrentMethod().Name);
 
             return result;
         }
@@ -123,7 +125,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 result = context.Set<T>().Find(id);
-            }, "StokTakibi.DAL.EntitiyFramework.Repository.GetById");
+            }, MethodBase.GetCurrentMethod().Name);
 
             return result;
         }
@@ -141,7 +143,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
             {
                 context.Set<T>().Remove(entity);
                 result = 1;
-            }, "StokTakibi.DAL.EntitiyFramework.Repository.Remove");
+            }, MethodBase.GetCurrentMethod().Name);
 
             return result;
         }
@@ -158,7 +160,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
             {
                 context.Set<T>().RemoveRange(entity);
                 result = 1;
-            }, "StokTakibi.DAL.EntitiyFramework.Repository.Remove");
+            }, MethodBase.GetCurrentMethod().Name);
 
             return result;
         }
@@ -180,7 +182,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
                     ? context.Set<T>().Where(expression)
                     : orderBy(context.Set<T>().Where(expression));
             },
-                "StokTakibi.DAL.EntitiyFramework.Repository.Remove");
+                 MethodBase.GetCurrentMethod().Name);
             return result;
         }
         /// <summary>
@@ -202,6 +204,7 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
         }
         /// <summary>
         /// String tipinde query alır ve veritabanında çalıştırır.
+        /// Dönüş değeri yoktur.
         /// </summary>
         /// <param name="query"></param>
         public void SqlQuery(string query)
@@ -210,6 +213,25 @@ namespace StokTakibi.DAL.EntitiyFramework.Repository
             {
                 context.Database.ExecuteSqlCommand(query);
             }, MethodBase.GetCurrentMethod().Name);
+        }
+
+        /// <summary>
+        /// IEnumerable tipinde dönüş değeri vardır. 
+        /// Aldığı query i list olarak döner.
+        /// Hata alması durumunda null değer döndürür.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="donusDegeri"></param>
+        /// <returns></returns>
+        public IEnumerable<T> SqlQuery(string query, bool donusDegeri)
+        {
+            IEnumerable<T> lstQuery = null;
+            DynamicTryCatch.TryCatchLogla(() =>
+            {
+                lstQuery = context.Database.SqlQuery<T>(query).ToList();
+            }, MethodBase.GetCurrentMethod().Name);
+
+            return lstQuery;
         }
     }
 }

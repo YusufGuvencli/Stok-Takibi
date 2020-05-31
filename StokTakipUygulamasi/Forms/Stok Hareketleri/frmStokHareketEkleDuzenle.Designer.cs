@@ -41,6 +41,7 @@
             this.txtMiktar = new DevExpress.XtraEditors.TextEdit();
             this.lookUpDurum = new DevExpress.XtraEditors.LookUpEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtFisNumarasi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUrun.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpKayitTarihi.Properties.CalendarTimeProperties)).BeginInit();
@@ -64,7 +65,7 @@
             this.txtFisNumarasi.Name = "txtFisNumarasi";
             this.txtFisNumarasi.Size = new System.Drawing.Size(176, 20);
             this.txtFisNumarasi.TabIndex = 0;
-            this.txtFisNumarasi.EditValueChanged += new System.EventHandler(this.txtFisNumarasi_EditValueChanged);
+            this.txtFisNumarasi.Leave += new System.EventHandler(this.txtFisNumarasi_Leave);
             // 
             // lookUpUrun
             // 
@@ -108,6 +109,7 @@
             this.btnKaydet.Size = new System.Drawing.Size(82, 31);
             this.btnKaydet.TabIndex = 4;
             this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // labelControl4
             // 
@@ -156,13 +158,14 @@
             this.lookUpDurum.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpDurum.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StokHareketTipi", "Hareket Tipi")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HareketTipi", "Hareket Tipi")});
             this.lookUpDurum.Properties.NullText = "Giriş/Çıkış Durumu Seçiniz";
             this.lookUpDurum.Size = new System.Drawing.Size(174, 20);
             this.lookUpDurum.TabIndex = 6;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDuzenle);
             this.groupBox1.Controls.Add(this.lookUpDurum);
             this.groupBox1.Controls.Add(this.labelControl1);
             this.groupBox1.Controls.Add(this.lookUpUrun);
@@ -180,6 +183,16 @@
             this.groupBox1.Size = new System.Drawing.Size(285, 233);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.Location = new System.Drawing.Point(93, 176);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(82, 31);
+            this.btnDuzenle.TabIndex = 7;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Visible = false;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // frmStokHareketEkleDuzenle
             // 
@@ -221,5 +234,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LookUpEdit lookUpDurum;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.SimpleButton btnDuzenle;
     }
 }

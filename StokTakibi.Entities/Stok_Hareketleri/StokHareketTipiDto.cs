@@ -12,11 +12,11 @@ namespace StokTakibi.Entities.Stok_Hareketleri
    public class StokHareketTipiDto
     {
         [Key]
-        public int StokHareketId { get; set; }
+        public int HareketDurumId { get; set; }
         [Required,MaxLength(10)]
-        public string StokHareketTipi { get; set; }
+        public string HareketTipi { get; set; }
         [Required]
         public bool AktifMi { get; set; }
-
+        public List<StokHareketleriDto> stokHareketleriDtos { get; set; }
     }
 }

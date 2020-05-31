@@ -1,3 +1,80 @@
 2020-05-31 09:51:57.2009 ERROR The model backing the 'StokContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269). Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Remove
 2020-05-31 09:54:04.4745 ERROR Procedure or function 'Insert_Stok_Hareket_Tipi' expects parameter '@AktifMi', which was not supplied. Hata alinan metot : InsertWithProcedure
 2020-05-31 09:54:06.4218 ERROR Procedure or function 'Insert_Stok_Hareket_Tipi' expects parameter '@AktifMi', which was not supplied. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:18:56.4870 ERROR The model backing the 'StokContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269). Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Any
+2020-05-31 11:19:48.7423 ERROR Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:36:46.3426 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:36:47.1757 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 11:36:48.0825 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:36:48.9076 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:41:18.6040 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:41:19.1820 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 11:41:19.9395 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:41:20.5753 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:43:45.2028 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:43:45.7670 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 11:43:46.3541 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:43:46.9288 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:46:43.1429 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:46:43.7505 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 11:46:44.3588 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:46:44.9081 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:58:51.8160 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 11:58:52.5043 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 11:58:53.0960 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 11:58:53.7133 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:02:24.6753 ERROR The ForeignKeyAttribute on property 'stokKarti' on type 'StokTakibi.Entities.Stok_Hareketleri.StokHareketleriDto' is not valid. The foreign key name 'FK_Stok_Hareketleri_Stok_Kartlari' was not found on the dependent type 'StokTakibi.Entities.Stok_Hareketleri.StokHareketleriDto'. The Name value should be a comma separated list of foreign key property names. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Any
+2020-05-31 12:13:44.8274 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 12:13:45.8664 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 12:13:46.4960 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:13:47.2009 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:16:51.2608 ERROR Invalid column name 'FisNumarasi'.
+Invalid column name 'GirisCikisMiktari'.
+Invalid column name 'GirisCikisDurum'.
+Invalid column name 'Depo_DepoId'. Hata alinan metot : SqlQuery
+2020-05-31 12:16:51.8564 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 12:16:52.4290 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:16:52.9847 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:29:56.2034 ERROR Implicit conversion from data type datetime to int is not allowed. Use the CONVERT function to run this query. Hata alinan metot : SqlQuery
+2020-05-31 12:30:01.8032 ERROR Invalid column name 'stokHareketTipi'. Hata alinan metot : SqlQuery
+2020-05-31 12:30:08.9503 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:30:10.3991 ERROR Could not find stored procedure 'Insert_Stok_Hareket_Tipi'. Hata alinan metot : InsertWithProcedure
+2020-05-31 12:31:40.6591 ERROR Implicit conversion from data type datetime to int is not allowed. Use the CONVERT function to run this query. Hata alinan metot : SqlQuery
+2020-05-31 12:55:20.4921 ERROR Incorrect syntax near '@Aktif'. Hata alinan metot : InsertWithProcedure
+2020-05-31 16:07:40.0921 ERROR Cannot roll back insert_tran. No transaction or savepoint of that name was found.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 2.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 2. Hata alinan metot : InsertWithProcedure
+2020-05-31 16:26:17.5776 ERROR Input string was not in a correct format. Hata alinan metot : StokHareketiKaydet
+2020-05-31 16:28:23.5518 ERROR Input string was not in a correct format. Hata alinan metot : StokHareketiKaydet
+2020-05-31 16:29:12.3119 ERROR Input string was not in a correct format. Hata alinan metot : StokHareketiKaydet
+2020-05-31 16:29:48.6073 ERROR Input string was not in a correct format. Hata alinan metot : StokHareketiKaydet
+2020-05-31 16:33:48.8799 ERROR Cannot roll back insert_tran. No transaction or savepoint of that name was found.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 2.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 2. Hata alinan metot : InsertWithProcedure
+2020-05-31 16:57:39.8771 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-31 16:58:17.0405 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-31 16:58:45.9617 ERROR Attaching an entity of type 'StokTakibi.Entities.Stok_Karti.StokKartiDto' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Update
+2020-05-31 16:58:47.4662 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-31 17:00:27.3450 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-31 17:11:25.8171 ERROR Object reference not set to an instance of an object. Hata alinan metot : YeniStokKaydet
+2020-05-31 17:21:35.1947 ERROR The parameterized query '(@StokKodu nvarchar(2),@StokAdi nvarchar(3),@Kdv int,@Fiyat deci' expects the parameter '@Resim', which was not supplied. Hata alinan metot : InsertWithProcedure
+2020-05-31 17:34:29.4140 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : SqlQuery

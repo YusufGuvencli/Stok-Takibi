@@ -18,27 +18,19 @@ namespace StokTakibi.BLL.Business_Operations
         /// </summary>
         /// <param name="kullanici"></param>
         /// <returns></returns>
-        public LoginEnums KullaniciGiris (KullaniciDto kullanici)
+        public int KullaniciGiris (KullaniciDto kullanici)
         {
-            LoginEnums loginEnums=LoginEnums.EksikParametreHatasi;
-
+            int result = -1;
+           
             DynamicTryCatch.TryCatchLogla(() => {
                if(!string.IsNullOrEmpty(kullanici.KullaniciAdi) && !string.IsNullOrEmpty(kullanici.Sifre))
                 {
-                    bool result = _kullanici.KullaniciGiris(kullanici);
-                    if (result)
-                    {
-                        loginEnums=LoginEnums.GirisBasarili;
-                    }
-                    else
-                    {
-                        loginEnums= LoginEnums.KullaniciBulunamadi;
-                    }
+                     result = _kullanici.KullaniciGiris(kullanici);                   
                 }              
                
             }, "");
 
-            return loginEnums;
+            return result;
         }
     }
 }

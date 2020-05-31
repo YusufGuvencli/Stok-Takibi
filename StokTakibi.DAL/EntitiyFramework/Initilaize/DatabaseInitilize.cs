@@ -88,38 +88,38 @@ END;";
 
             #region Stok Hareketleri Procedure 
             string insertStokHareketleriProcedure = @"CREATE PROCEDURE [dbo].[Insert_StokHareketleri]
-    @FisNumarasi NVARCHAR(15),
-    @GirisCikisMiktari INT,
-    @GirisCikisDurum INT,
+    @Fisno NVARCHAR(15),
+    @Miktar INT,
+    @HareketDurumId INT,
+    @StokKartId INT,
     @KayitTarihi DATETIME,
     @KullaniciId INT,
-    @DepoId INT,
     @AktifMi BIT
 AS
 BEGIN
     BEGIN TRANSACTION [insert_tran];
     BEGIN TRY
 
-        INSERT INTO dbo.Stok_Hareketleri
-        (
-            FisNumarasi,
-            GirisCikisMiktari,
-            GirisCikisDurum,
-            KayitTarihi,
-            KullaniciId,
-            Depo_DepoId,
-            AktifMi
-        )
-        VALUES
-        (   @FisNumarasi,       -- FisNumarasi - nvarchar(15)	       
-            @GirisCikisMiktari, -- GirisCikisMiktari - int
-            @GirisCikisDurum,   -- GirisCikisDurum - int
-            @KayitTarihi,       -- KayitTarihi - datetime
-            @KullaniciId,       -- KullaniciId - int
-            @DepoId,            -- AktifMi - bit
-            @AktifMi            -- Depo_DepoId - int
-            );
 
+			INSERT INTO dbo.Stok_Hareketleri
+			(
+			    FisNo,
+			    Miktar,
+			    HareketDurumId,
+			    StokKartId,
+			    KayitTarihi,
+			    KullaniciId,
+			    AktifMi
+			)
+			VALUES
+			(   @Fisno,
+				@Miktar,
+				@HareketDurumId,
+				@StokKartId,
+				@KayitTarihi,
+				@KullaniciId,
+				@AktifMi
+			    )
         COMMIT TRANSACTION [insert_tran];
         RETURN 1;
     END TRY
@@ -129,6 +129,10 @@ BEGIN
     END CATCH;
     END;";
             _uow.GenericRepository<StokHareketleriDto>().SqlQuery(insertStokHareketleriProcedure);
+
+            string queryForeignKey = @"ALTER TABLE Stok_Hareketleri
+                ADD FOREIGN KEY(StokKartId) REFERENCES Stok_Kartlari(StokKartId); ";
+            _uow.GenericRepository<StokHareketleriDto>().SqlQuery(queryForeignKey);
             #endregion
 
             #region Stok Kartları Procedure
@@ -140,32 +144,38 @@ BEGIN
    @Aciklama NVARCHAR(MAX),
    @Resim VARBINARY(MAX),
    @DepoId INT,
+   @KayitTarihi DATETIME,
+   @KullaniciId INT,
    @Aktif BIT
 AS
 BEGIN
     BEGIN TRANSACTION [insert_tran];
     BEGIN TRY
 
-       INSERT INTO	 dbo.Stok_Kartlari
+       INSERT INTO	dbo.Stok_Kartlari
        (
-           stokKodu,
+           StokKodu,
            StokAdi,
            Kdv,
            Fiyat,
            Aciklama,
            Resim,
            DepoId,
-           AktifMi          
+           KayitTarihi,
+           KullaniciId,
+           AktifMi
        )
        VALUES
-       (   @StokKodu,  -- stokKodu - nvarchar(15)
-           @StokAdi,  -- StokAdi - nvarchar(50)
-           @Kdv,    -- Kdv - int
-           @Fiyat, -- Fiyat - decimal(18, 2)
-           @Aciklama,  -- Aciklama - nvarchar(max)
-           @Resim,    -- Resim - tinyint
-           @DepoId,    -- DepoId - int
-           @Aktif -- AktifMi - bit           
+       (   @StokKodu,       -- StokKodu - nvarchar(15)
+           @StokAdi,       -- StokAdi - nvarchar(50)
+           @Kdv,         -- Kdv - int
+           @Fiyat,      -- Fiyat - decimal(18, 2)
+          @Aciklama,       -- Aciklama - nvarchar(max)
+           @Resim,      -- Resim - varbinary(max)
+           @DepoId,         -- DepoId - int
+           @KayitTarihi, -- KayitTarihi - datetime
+           @KullaniciId,         -- KullaniciId - int
+           @Aktif       -- AktifMi - bit
            )
 
         COMMIT TRANSACTION [insert_tran];
@@ -187,8 +197,15 @@ END;";
     BEGIN
     BEGIN TRANSACTION [insert_tran];
     BEGIN TRY
-        INSERT INTO Stok_Hareket_Tipi(stokHareketTipi,AktifMi)
-		VALUES (@StokHareketTipi,@AktifMi);        
+       INSERT INTO dbo.Stok_Hareket_Tipi
+       (
+           HareketTipi,
+           AktifMi
+       )
+       VALUES
+       (   @StokHareketTipi, -- HareketTipi - nvarchar(10)
+           @AktifMi -- AktifMi - bit
+           )        
         COMMIT TRANSACTION [insert_tran];
         RETURN 1;
     END TRY
@@ -220,11 +237,11 @@ END;";
 
             StokHareketTipiDto stokHareketTipi;
             StokHareketTipiDal stokHareketDal;
-            string[] hareketler = new string[] { "Giriş", "Çıkış"};
+            string[] hareketler = new string[] { "Giriş", "Çıkış" };
             for (int i = 0; i < hareketler.Length; i++)
             {
                 stokHareketTipi = new StokHareketTipiDto();
-                stokHareketTipi.StokHareketTipi = hareketler[i];
+                stokHareketTipi.HareketTipi = hareketler[i];
                 stokHareketTipi.AktifMi = true;
 
                 stokHareketDal = new StokHareketTipiDal();
@@ -236,9 +253,9 @@ END;";
 
             DepoDto depoDto = new DepoDto()
             {
-                DepoAdi="Test Deposu",
-                DepoKodu="00001",
-                AktifMi=true
+                DepoAdi = "Test Deposu",
+                DepoKodu = "00001",
+                AktifMi = true
             };
 
             DepoDal depoDal = new DepoDal();
@@ -246,6 +263,16 @@ END;";
 
             #endregion
 
+            #region Stok Hareketleri View 
+            string stokHareketView = @"CREATE VIEW [dbo].[vw_StokHareketleri]
+AS
+SELECT        H.HareketId, H.FisNo, H.Miktar, tip.HareketDurumId, tip.HareketTipi, K.StokKartId, K.StokKodu, K.StokAdi, H.KayitTarihi
+FROM            dbo.Stok_Hareketleri AS H INNER JOIN
+                         dbo.Stok_Kartlari AS K ON K.StokKartId = H.StokKartId INNER JOIN
+                         dbo.Stok_Hareket_Tipi AS tip ON tip.HareketDurumId = H.HareketDurumId
+WHERE        (H.AktifMi = 1)";
+            _uow.GenericRepository<StokHareketleriDto>().SqlQuery(stokHareketView);
+            #endregion
         }
 
     }
