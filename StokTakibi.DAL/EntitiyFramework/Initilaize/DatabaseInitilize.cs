@@ -4,6 +4,7 @@ using StokTakibi.DAL.Operations.Kullanici;
 using StokTakibi.DAL.Operations.Stok;
 using StokTakibi.Entities.Depo;
 using StokTakibi.Entities.Kullanici;
+using StokTakibi.Entities.Raporlar;
 using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.Entities.Stok_Karti;
 
@@ -273,7 +274,18 @@ FROM            dbo.Stok_Hareketleri AS H INNER JOIN
 WHERE        (H.AktifMi = 1)";
             _uow.GenericRepository<StokHareketleriDto>().SqlQuery(stokHareketView);
             #endregion
+
+            #region Stok Hareket Raporu View 
+            string stokHareketRaporu = @"CREATE VIEW [dbo].[vw_StokHareketRaporu]
+AS
+SELECT        H.FisNo, H.Miktar, H.KayitTarihi AS HareketTarihi, tip.HareketTipi, K.StokKodu, K.StokAdi, K.Aciklama, K.KayitTarihi AS StokKayitTarihi
+FROM            dbo.Stok_Hareketleri AS H INNER JOIN
+                         dbo.Stok_Hareket_Tipi AS tip ON tip.HareketDurumId = H.HareketDurumId INNER JOIN
+                         dbo.Stok_Kartlari AS K ON K.StokKartId = H.StokKartId";
+            _uow.GenericRepository<StokHareketleriRaporDto>().SqlQuery(stokHareketRaporu);
+            #endregion
         }
+
 
     }
 }

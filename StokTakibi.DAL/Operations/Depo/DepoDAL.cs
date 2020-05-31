@@ -39,6 +39,12 @@ namespace StokTakibi.DAL.Operations.Depo
             , MethodBase.GetCurrentMethod().Name);
             return result;
         }
+        /// <summary>
+        /// DepoDto tipinde entity alır ve veritabanında günceller.
+        /// Hata alması durumunda -1 döner.
+        /// </summary>
+        /// <param name="depo"></param>
+        /// <returns></returns>
         public int DepoDuzenle(DepoDto depo)
         {
             int result = -1;
@@ -50,7 +56,12 @@ namespace StokTakibi.DAL.Operations.Depo
             }, MethodBase.GetCurrentMethod().Name);
             return result;
         }
-
+        /// <summary>
+        /// DepoDto tipinde entity alır ve veritabanında deaktif eder.
+        /// Hata alması durumunda -1 döner.
+        /// </summary>
+        /// <param name="depo"></param>
+        /// <returns></returns>
         public int DepoSil(DepoDto depo)
         {
             int result = -1;
@@ -62,16 +73,21 @@ namespace StokTakibi.DAL.Operations.Depo
             }, "StokTakibi.DAL.Operations.Depo.DepoDuzenle");
             return result;
         }
+        /// <summary>
+        /// Veritabanındaki tüm DepoDto kayitlarini döner.
+        /// Hata alması durumunda null değer döndürür.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<DepoDto> DepolariGetir()
         {
-            IEnumerable<DepoDto> depolar = null;
+            IEnumerable<DepoDto> lstDepolar = null;
 
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                depolar = _uow.GenericRepository<DepoDto>().Where(i => i.AktifMi == true);
+                lstDepolar = _uow.GenericRepository<DepoDto>().Where(i => i.AktifMi == true);
             }, "StokTakibi.DAL.Operations.Depo.DepolariGetir");
 
-            return depolar;
+            return lstDepolar;
         }
     }
 }

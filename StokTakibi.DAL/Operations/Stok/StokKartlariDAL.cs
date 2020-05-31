@@ -13,11 +13,11 @@ namespace StokTakibi.DAL.Operations.Stok
     public class StokKartlariDal
     {
         UnitOfWorkBase _uow;
-        StokContext context;
+        StokContext _context;
         public StokKartlariDal()
         {
-            context = new StokContext();
-            _uow = new UnitOfWorkBase(context);
+            _context = new StokContext();
+            _uow = new UnitOfWorkBase(_context);
         }
         /// <summary>
         /// Aktif olan tüm stok kartlarını döndürür.

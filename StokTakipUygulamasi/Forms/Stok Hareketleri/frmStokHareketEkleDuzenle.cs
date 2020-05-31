@@ -21,8 +21,8 @@ namespace StokTakipUygulamasi.Forms.Stok_Hareketleri
 {
     public partial class frmStokHareketEkleDuzenle : DevExpress.XtraEditors.XtraForm
     {
-        StokHareketView stokHareketView;
-        StokHareketleriDto stokHareketDto;
+        StokHareketView viewStokHareket;
+        StokHareketleriDto dtoStokHareket;
         int kullaniciId;
         public frmStokHareketEkleDuzenle(int _kullaniciId, StokHareketView _stokHareketleri = null)
         {
@@ -30,7 +30,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Hareketleri
 
             if (_stokHareketleri != null)
             {
-                stokHareketView = _stokHareketleri;
+                viewStokHareket = _stokHareketleri;
                 this.Text = "Hareket Düzenleme Ekranı";
                 btnKaydet.Hide();
                 btnDuzenle.Show();
@@ -42,7 +42,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Hareketleri
 
         private void InitializeForm()
         {
-            StokHareketTipiBLL stokHareketTipi = new StokHareketTipiBLL();
+            StokHareketTipiBll stokHareketTipi = new StokHareketTipiBll();
             StokKartlariBll stokKarti = new StokKartlariBll();
 
             dtpKayitTarihi.DateTime = DateTime.Now;
@@ -56,13 +56,13 @@ namespace StokTakipUygulamasi.Forms.Stok_Hareketleri
             lookUpUrun.Properties.ValueMember = "StokKartId";
 
 
-            if (stokHareketView != null)
+            if (viewStokHareket != null)
             {
-                txtFisNumarasi.Text = stokHareketView.FisNo;
-                txtMiktar.Text = stokHareketView.Miktar.ToString();
-                lookUpDurum.EditValue = stokHareketView.HareketDurumId;
-                lookUpUrun.EditValue = stokHareketView.StokKartId;
-                dtpKayitTarihi.DateTime = stokHareketView.KayitTarihi;
+                txtFisNumarasi.Text = viewStokHareket.FisNo;
+                txtMiktar.Text = viewStokHareket.Miktar.ToString();
+                lookUpDurum.EditValue = viewStokHareket.HareketDurumId;
+                lookUpUrun.EditValue = viewStokHareket.StokKartId;
+                dtpKayitTarihi.DateTime = viewStokHareket.KayitTarihi;
             }
 
         }
@@ -71,42 +71,55 @@ namespace StokTakipUygulamasi.Forms.Stok_Hareketleri
         {
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                stokHareketDto = new StokHareketleriDto();
-                stokHareketDto.FisNo = txtFisNumarasi.Text;
-                stokHareketDto.Miktar = FormHelpers.TextNullCheck(txtMiktar.Text) ? Convert.ToInt32(txtMiktar.Text) : -1;
-                stokHareketDto.HareketDurumId = Convert.ToInt32(lookUpDurum.EditValue) > 0 ? Convert.ToInt32(lookUpDurum.EditValue) : -1;
-                stokHareketDto.KayitTarihi = dtpKayitTarihi.DateTime;
-                stokHareketDto.KullaniciId = kullaniciId;
-                stokHareketDto.StokKartId = Convert.ToInt32(lookUpUrun.EditValue) > 0 ? Convert.ToInt32(lookUpUrun.EditValue) : -1;
-                stokHareketDto.AktifMi = true;
+                dtoStokHareket = new StokHareketleriDto();
+                dtoStokHareket.FisNo = txtFisNumarasi.Text;
+                dtoStokHareket.Miktar = FormHelpers.TextNullCheck(txtMiktar.Text) ? Convert.ToInt32(txtMiktar.Text) : -1;
+                dtoStokHareket.HareketDurumId = Convert.ToInt32(lookUpDurum.EditValue) > 0 ? Convert.ToInt32(lookUpDurum.EditValue) : -1;
+                dtoStokHareket.KayitTarihi = dtpKayitTarihi.DateTime;
+                dtoStokHareket.KullaniciId = kullaniciId;
+                dtoStokHareket.StokKartId = Convert.ToInt32(lookUpUrun.EditValue) > 0 ? Convert.ToInt32(lookUpUrun.EditValue) : -1;
+                dtoStokHareket.AktifMi = true;
 
 
             }, MethodBase.GetCurrentMethod().Name);
 
-            StokHareketleriBLL stokHareketleri = new StokHareketleriBLL();
+            StokHareketleriBll stokHareketleri = new StokHareketleriBll();
 
-            CudEnums enums = stokHareketleri.StokHareketiEkle(stokHareketDto);
+            CudEnums enums = stokHareketleri.StokHareketiEkle(dtoStokHareket);
+            if (enums == CudEnums.IslemBasarili)
+            {
+                FormHelpers.ClearTextboxes(this.Controls);
+                dtpKayitTarihi.DateTime = DateTime.Now;
+            }
+
             FormHelpers.ShowMessage(enums);
         }
 
         private void StokHareketleriDuzenle()
         {
-            stokHareketDto = new StokHareketleriDto()
+            dtoStokHareket = new StokHareketleriDto()
             {
                 AktifMi = true,
-                HareketId = stokHareketView.HareketId
+                HareketId = viewStokHareket.HareketId
             };
 
-            stokHareketDto.FisNo = txtFisNumarasi.Text;
-            stokHareketDto.Miktar = FormHelpers.TextNullCheck(txtMiktar.Text) ? Convert.ToInt32(txtMiktar.Text) : -1;
-            stokHareketDto.HareketDurumId = Convert.ToInt32(lookUpDurum.EditValue) > 0 ? Convert.ToInt32(lookUpDurum.EditValue) : -1;
-            stokHareketDto.KayitTarihi = dtpKayitTarihi.DateTime;
-            stokHareketDto.KullaniciId = kullaniciId;
-            stokHareketDto.StokKartId = Convert.ToInt32(lookUpUrun.EditValue) > 0 ? Convert.ToInt32(lookUpUrun.EditValue) : -1;
+            dtoStokHareket.FisNo = txtFisNumarasi.Text;
+            dtoStokHareket.Miktar = FormHelpers.TextNullCheck(txtMiktar.Text) ? Convert.ToInt32(txtMiktar.Text) : -1;
+            dtoStokHareket.HareketDurumId = Convert.ToInt32(lookUpDurum.EditValue) > 0 ? Convert.ToInt32(lookUpDurum.EditValue) : -1;
+            dtoStokHareket.KayitTarihi = dtpKayitTarihi.DateTime;
+            dtoStokHareket.KullaniciId = kullaniciId;
+            dtoStokHareket.StokKartId = Convert.ToInt32(lookUpUrun.EditValue) > 0 ? Convert.ToInt32(lookUpUrun.EditValue) : -1;
 
-            StokHareketleriBLL stokHareketleriBLL = new StokHareketleriBLL();
+            StokHareketleriBll stokHareketleriBLL = new StokHareketleriBll();
 
-            CudEnums enums = stokHareketleriBLL.StokHareketiGuncelle(stokHareketDto);
+            
+            CudEnums enums = stokHareketleriBLL.StokHareketiGuncelle(dtoStokHareket);
+
+            if (enums == CudEnums.IslemBasarili)
+            {
+                FormHelpers.ClearTextboxes(this.Controls);
+                dtpKayitTarihi.DateTime = DateTime.Now;
+            }
 
             FormHelpers.ShowMessage(enums);
         }

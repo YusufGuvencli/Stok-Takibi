@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using StokTakibi.BLL.Business_Operations;
 using StokTakibi.Entities.Stok_Karti;
-using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.BLL.Business_Operations.Stok_Kartlari;
 using StokTakibi.Helper.Enums;
 using StokTakibi.Helper.Form_Helpers;
@@ -22,22 +15,22 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
 {
     public partial class frmStokEkleDuzenle : DevExpress.XtraEditors.XtraForm
     {
-        DepoBll depoBLL;
-        StokKartlariBll stokKartiBll;
-        StokKartiDto stokKarti;
+        DepoBll bllDepo;
+        StokKartlariBll bllStokKarti;
+        StokKartiDto dtoStokKarti;
         int kullaniciId;
         public frmStokEkleDuzenle(int _kullaniciId, StokKartiDto _stokKarti = null)
         {
             InitializeComponent();
             kullaniciId = _kullaniciId;
             txtStokKodu.Focus();
-            depoBLL = new DepoBll();
-            stokKartiBll = new StokKartlariBll();
+            bllDepo = new DepoBll();
+            bllStokKarti = new StokKartlariBll();
             dtpKayitTarihi.DateTime = DateTime.Now;
             cmbKdv.SelectedIndex = 0;
             if (_stokKarti != null)
             {
-                stokKarti = _stokKarti;
+                dtoStokKarti = _stokKarti;
                 InitilizeStokKarti();
                 this.Text = "Stok Düzenleme Ekranı";
                 btnKaydet.Text = "Düzenle";
@@ -48,18 +41,18 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
 
         private void InitilizeStokKarti()
         {
-            txtStokKodu.Text = stokKarti.StokKodu;
-            txtStokAdi.Text = stokKarti.StokAdi;
-            cmbKdv.Text = stokKarti.Kdv.ToString();
-            txtFiyat.Text = stokKarti.Fiyat.ToString();
-            lookUpDepo.EditValue = stokKarti.DepoId;
-            txtAciklama.Text = stokKarti.Aciklama;
-            dtpKayitTarihi.DateTime = stokKarti.KayitTarihi;
+            txtStokKodu.Text = dtoStokKarti.StokKodu;
+            txtStokAdi.Text = dtoStokKarti.StokAdi;
+            cmbKdv.Text = dtoStokKarti.Kdv.ToString();
+            txtFiyat.Text = dtoStokKarti.Fiyat.ToString();
+            lookUpDepo.EditValue = dtoStokKarti.DepoId;
+            txtAciklama.Text = dtoStokKarti.Aciklama;
+            dtpKayitTarihi.DateTime = dtoStokKarti.KayitTarihi;
 
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                MemoryStream ms = new MemoryStream(stokKarti.Resim, 0, stokKarti.Resim.Length);
-                ms.Write(stokKarti.Resim, 0, stokKarti.Resim.Length);
+                MemoryStream ms = new MemoryStream(dtoStokKarti.Resim, 0, dtoStokKarti.Resim.Length);
+                ms.Write(dtoStokKarti.Resim, 0, dtoStokKarti.Resim.Length);
                 pictureBox1.Image = Image.FromStream(ms, true);
             }, MethodBase.GetCurrentMethod().Name);
         }
@@ -81,19 +74,19 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
                 ImageConverter converter = new ImageConverter();
                 arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
-                stokKarti = new StokKartiDto();
-                stokKarti.StokKodu = txtStokKodu.Text;
-                stokKarti.StokAdi = txtStokAdi.Text;
-                stokKarti.Kdv = FormHelpers.TextNullCheck(cmbKdv.SelectedItem.ToString()) ? Convert.ToInt32(cmbKdv.SelectedItem.ToString()) : -1;
-                stokKarti.Fiyat = FormHelpers.TextNullCheck(txtFiyat.Text) ? Convert.ToDecimal(txtFiyat.Text) : -1;
-                stokKarti.DepoId = Convert.ToInt32(lookUpDepo.EditValue) > 0 ? Convert.ToInt32(lookUpDepo.EditValue) : -1;
-                stokKarti.Aciklama = txtAciklama.Text;
-                stokKarti.KullaniciId = kullaniciId;
-                stokKarti.KayitTarihi = dtpKayitTarihi.DateTime;
-                stokKarti.Resim = arr;
-                stokKarti.AktifMi = true;
+                dtoStokKarti = new StokKartiDto();
+                dtoStokKarti.StokKodu = txtStokKodu.Text;
+                dtoStokKarti.StokAdi = txtStokAdi.Text;
+                dtoStokKarti.Kdv = FormHelpers.TextNullCheck(cmbKdv.SelectedItem.ToString()) ? Convert.ToInt32(cmbKdv.SelectedItem.ToString()) : -1;
+                dtoStokKarti.Fiyat = FormHelpers.TextNullCheck(txtFiyat.Text) ? Convert.ToDecimal(txtFiyat.Text) : -1;
+                dtoStokKarti.DepoId = Convert.ToInt32(lookUpDepo.EditValue) > 0 ? Convert.ToInt32(lookUpDepo.EditValue) : -1;
+                dtoStokKarti.Aciklama = txtAciklama.Text;
+                dtoStokKarti.KullaniciId = kullaniciId;
+                dtoStokKarti.KayitTarihi = dtpKayitTarihi.DateTime;
+                dtoStokKarti.Resim = arr;
+                dtoStokKarti.AktifMi = true;
 
-                CudEnums enums = stokKartiBll.StokKartiEkle(stokKarti);
+                CudEnums enums = bllStokKarti.StokKartiEkle(dtoStokKarti);
                 if (enums == CudEnums.IslemBasarili)
                     ClearControls();
 
@@ -103,7 +96,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
 
         private void frmYeniStok_Load(object sender, EventArgs e)
         {
-            lookUpDepo.Properties.DataSource = depoBLL.DepolariGetir().ToList();
+            lookUpDepo.Properties.DataSource = bllDepo.DepolariGetir().ToList();
             lookUpDepo.Properties.DisplayMember = "DepoAdi";
             lookUpDepo.Properties.ValueMember = "DepoId";
         }
@@ -146,18 +139,18 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
                 arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
 
-                stokKarti.StokKodu = txtStokKodu.Text;
-                stokKarti.StokAdi = txtStokAdi.Text;
-                stokKarti.Kdv = FormHelpers.TextNullCheck(cmbKdv.SelectedItem.ToString()) ? Convert.ToInt32(cmbKdv.SelectedItem.ToString()) : -1;
-                stokKarti.Fiyat = FormHelpers.TextNullCheck(txtFiyat.Text) ? Convert.ToDecimal(txtFiyat.Text) : -1;
-                stokKarti.DepoId = Convert.ToInt32(lookUpDepo.EditValue) > 0 ? Convert.ToInt32(lookUpDepo.EditValue) : -1;
-                stokKarti.Aciklama = txtAciklama.Text;
-                stokKarti.KullaniciId = kullaniciId;
-                stokKarti.KayitTarihi = dtpKayitTarihi.DateTime;
-                stokKarti.Resim = arr;
-                stokKarti.AktifMi = true;
+                dtoStokKarti.StokKodu = txtStokKodu.Text;
+                dtoStokKarti.StokAdi = txtStokAdi.Text;
+                dtoStokKarti.Kdv = FormHelpers.TextNullCheck(cmbKdv.SelectedItem.ToString()) ? Convert.ToInt32(cmbKdv.SelectedItem.ToString()) : -1;
+                dtoStokKarti.Fiyat = FormHelpers.TextNullCheck(txtFiyat.Text) ? Convert.ToDecimal(txtFiyat.Text) : -1;
+                dtoStokKarti.DepoId = Convert.ToInt32(lookUpDepo.EditValue) > 0 ? Convert.ToInt32(lookUpDepo.EditValue) : -1;
+                dtoStokKarti.Aciklama = txtAciklama.Text;
+                dtoStokKarti.KullaniciId = kullaniciId;
+                dtoStokKarti.KayitTarihi = dtpKayitTarihi.DateTime;
+                dtoStokKarti.Resim = arr;
+                dtoStokKarti.AktifMi = true;
 
-                CudEnums enums = stokKartiBll.StokKartiDuzenle(stokKarti);
+                CudEnums enums = bllStokKarti.StokKartiDuzenle(dtoStokKarti);
 
                 if (enums == CudEnums.IslemBasarili)
                     ClearControls();

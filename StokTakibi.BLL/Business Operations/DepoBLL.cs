@@ -10,10 +10,10 @@ namespace StokTakibi.BLL.Business_Operations
 
     public class DepoBll
     {
-        private readonly DepoDal depoDAL;
+        private readonly DepoDal dalDepo;
         public DepoBll()
         {
-            depoDAL = new DepoDal();
+            dalDepo = new DepoDal();
         }
         /// <summary>
         /// Depo tipinde entity alır ve DepoDAL nesnesine gönderir.
@@ -28,7 +28,7 @@ namespace StokTakibi.BLL.Business_Operations
             {
                 if (!string.IsNullOrEmpty(depo.DepoAdi) && !string.IsNullOrEmpty(depo.DepoKodu))
                 {
-                    int result = depoDAL.DepoEkle(depo);
+                    int result = dalDepo.DepoEkle(depo);
                     if (result > 0)
                     {
                         enums = CudEnums.IslemBasarili;
@@ -48,22 +48,27 @@ namespace StokTakibi.BLL.Business_Operations
         /// <returns></returns>
         public IEnumerable<DepoDto> DepolariGetir()
         {
-            IEnumerable<DepoDto> depolar = null;
+            IEnumerable<DepoDto> lstDepolar = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                depolar = depoDAL.DepolariGetir();
+                lstDepolar = dalDepo.DepolariGetir();
             }, MethodBase.GetCurrentMethod().Name);
 
-            return depolar;
+            return lstDepolar;
         }
-
+        /// <summary>
+        /// DepoDto tipinde entity alır ve veritabanında deaktive eder.
+        /// Hata alması durumunda CudEnums döner.
+        /// </summary>
+        /// <param name="depo"></param>
+        /// <returns></returns>
         public CudEnums DepoSil(DepoDto depo)
         {
             CudEnums enums = CudEnums.VeritabaniHatasi;            
             DynamicTryCatch.TryCatchLogla(()=> 
             {
                 depo.AktifMi = false;
-                int result = depoDAL.DepoDuzenle(depo);
+                int result = dalDepo.DepoDuzenle(depo);
                 if (result > 0)
                 {
                     enums = CudEnums.IslemBasarili;
@@ -71,7 +76,12 @@ namespace StokTakibi.BLL.Business_Operations
             },MethodBase.GetCurrentMethod().Name);
             return enums;
         }
-
+        /// <summary>
+        /// DepoDto tipinde entity alır ve veritabanında güncelleme yapar.
+        /// Hata alması durumunda CudEnums döner.
+        /// </summary>
+        /// <param name="depoDto"></param>
+        /// <returns></returns>
         public CudEnums DepoDuzenle(DepoDto depoDto)
         {
             CudEnums enums = CudEnums.EksikParametreHatasi;
@@ -79,7 +89,7 @@ namespace StokTakibi.BLL.Business_Operations
             {
                 if (!string.IsNullOrEmpty(depoDto.DepoAdi) && !string.IsNullOrEmpty(depoDto.DepoKodu))
                 {
-                   int result= depoDAL.DepoDuzenle(depoDto);
+                   int result= dalDepo.DepoDuzenle(depoDto);
                     if (result > 0)
                     {
                         enums = CudEnums.IslemBasarili;

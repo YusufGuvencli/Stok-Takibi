@@ -1,22 +1,18 @@
 ﻿using StokTakibi.DAL.Operations.Stok;
 using StokTakibi.Entities.Stok_Hareketleri;
 using StokTakibi.Helper.TryCatch;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StokTakibi.BLL.Business_Operations
 {
-    public class StokHareketTipiBLL
+    public class StokHareketTipiBll
     {
-        StokHareketTipiDal stokHareketTipi;
+        StokHareketTipiDal dalStokHareketTipi;
 
-        public StokHareketTipiBLL()
+        public StokHareketTipiBll()
         {
-            stokHareketTipi = new StokHareketTipiDal();
+            dalStokHareketTipi = new StokHareketTipiDal();
         }
         /// <summary>
         /// IEnumerable tipinde stok hareket tiplerini döner.
@@ -28,7 +24,7 @@ namespace StokTakibi.BLL.Business_Operations
             IEnumerable<StokHareketTipiDto> lstStokHareketTipleri = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                lstStokHareketTipleri = stokHareketTipi.StokHareketTipleriniGetir();
+                lstStokHareketTipleri = dalStokHareketTipi.StokHareketTipleriniGetir();
             }, MethodBase.GetCurrentMethod().Name);
 
             return lstStokHareketTipleri;

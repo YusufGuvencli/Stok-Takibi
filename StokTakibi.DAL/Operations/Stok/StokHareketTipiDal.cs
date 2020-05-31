@@ -5,7 +5,6 @@ using StokTakibi.Helper.TryCatch;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
 
 namespace StokTakibi.DAL.Operations.Stok

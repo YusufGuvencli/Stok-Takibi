@@ -88,6 +88,7 @@
             this.kapatToolStripMenuItem.Name = "kapatToolStripMenuItem";
             this.kapatToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.kapatToolStripMenuItem.Text = "Kapat";
+            this.kapatToolStripMenuItem.Click += new System.EventHandler(this.kapatToolStripMenuItem_Click);
             // 
             // grdStokHareketleri
             // 
@@ -118,6 +119,7 @@
             this.colFisNo.Caption = "FisNo";
             this.colFisNo.FieldName = "FisNo";
             this.colFisNo.Name = "colFisNo";
+            this.colFisNo.OptionsColumn.AllowEdit = false;
             this.colFisNo.Visible = true;
             this.colFisNo.VisibleIndex = 0;
             // 
@@ -126,6 +128,7 @@
             this.colMiktar.Caption = "Miktar";
             this.colMiktar.FieldName = "Miktar";
             this.colMiktar.Name = "colMiktar";
+            this.colMiktar.OptionsColumn.AllowEdit = false;
             this.colMiktar.Visible = true;
             this.colMiktar.VisibleIndex = 1;
             // 
@@ -134,6 +137,7 @@
             this.colHareketTipi.Caption = "Hareket Tipi";
             this.colHareketTipi.FieldName = "HareketTipi";
             this.colHareketTipi.Name = "colHareketTipi";
+            this.colHareketTipi.OptionsColumn.AllowEdit = false;
             this.colHareketTipi.Visible = true;
             this.colHareketTipi.VisibleIndex = 2;
             // 
@@ -142,6 +146,7 @@
             this.colStokKodu.Caption = "Stok Kodu";
             this.colStokKodu.FieldName = "StokKodu";
             this.colStokKodu.Name = "colStokKodu";
+            this.colStokKodu.OptionsColumn.AllowEdit = false;
             this.colStokKodu.Visible = true;
             this.colStokKodu.VisibleIndex = 3;
             // 
@@ -150,6 +155,7 @@
             this.colStokAdi.Caption = "Stok Adı";
             this.colStokAdi.FieldName = "StokAdi";
             this.colStokAdi.Name = "colStokAdi";
+            this.colStokAdi.OptionsColumn.AllowEdit = false;
             this.colStokAdi.Visible = true;
             this.colStokAdi.VisibleIndex = 4;
             // 
@@ -158,6 +164,7 @@
             this.colKayitTarihi.Caption = "Kayıt Tarihi";
             this.colKayitTarihi.FieldName = "KayitTarihi";
             this.colKayitTarihi.Name = "colKayitTarihi";
+            this.colKayitTarihi.OptionsColumn.AllowEdit = false;
             this.colKayitTarihi.Visible = true;
             this.colKayitTarihi.VisibleIndex = 5;
             // 

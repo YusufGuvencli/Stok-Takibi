@@ -1,16 +1,15 @@
 ﻿using StokTakibi.DAL.Operations.Kullanici;
 using StokTakibi.Entities.Kullanici;
-using StokTakibi.Helper.Enums;
 using StokTakibi.Helper.TryCatch;
 
 namespace StokTakibi.BLL.Business_Operations
 {
     public class KullaniciBll
     {
-        KullaniciDal _kullanici;
+        KullaniciDal dalKullanici;
         public KullaniciBll()
         {
-            _kullanici = new KullaniciDal();
+            dalKullanici = new KullaniciDal();
         }
         /// <summary>
         /// Kullanici icin girilen bilgiye göre entity sorgulanır
@@ -25,7 +24,7 @@ namespace StokTakibi.BLL.Business_Operations
             DynamicTryCatch.TryCatchLogla(() => {
                if(!string.IsNullOrEmpty(kullanici.KullaniciAdi) && !string.IsNullOrEmpty(kullanici.Sifre))
                 {
-                     result = _kullanici.KullaniciGiris(kullanici);                   
+                     result = dalKullanici.KullaniciGiris(kullanici);                   
                 }              
                
             }, "");

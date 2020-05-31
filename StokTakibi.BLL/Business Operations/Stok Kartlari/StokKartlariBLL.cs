@@ -2,21 +2,18 @@
 using StokTakibi.Entities.Stok_Karti;
 using StokTakibi.Helper.Enums;
 using StokTakibi.Helper.TryCatch;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
 {
     public class StokKartlariBll
     {
-        StokKartlariDal stokKartlariDAL;
+        StokKartlariDal dalStokKartlari;
         public StokKartlariBll()
         {
-            stokKartlariDAL = new StokKartlariDal();
+            dalStokKartlari = new StokKartlariDal();
         }
         /// <summary>
         /// IEnumerable tipinde liste döner.
@@ -25,12 +22,12 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
         /// <returns></returns>
         public IEnumerable<StokKartiDto> StokKartlariGetir()
         {
-            IEnumerable<StokKartiDto> stokKartlari = null;
+            IEnumerable<StokKartiDto> lstStokKartlari = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                stokKartlari = stokKartlariDAL.StokKartlariniGetir().ToList();
+                lstStokKartlari = dalStokKartlari.StokKartlariniGetir().ToList();
             }, MethodBase.GetCurrentMethod().Name);
-            return stokKartlari;
+            return lstStokKartlari;
         }
 
 
@@ -51,7 +48,7 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
                 && stokKarti.Fiyat != -1
                 && stokKarti.DepoId != -1)
                 {
-                    int result = stokKartlariDAL.StokKartiEkle(stokKarti);
+                    int result = dalStokKartlari.StokKartiEkle(stokKarti);
                     if (result > 0)
                     {
                         enums = CudEnums.IslemBasarili;
@@ -81,7 +78,7 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
                     && stokKarti.Fiyat != -1
                     && stokKarti.DepoId != -1)
                 {
-                    int result = stokKartlariDAL.StokKartiDuzenle(stokKarti);
+                    int result = dalStokKartlari.StokKartiDuzenle(stokKarti);
                     if (result > 0)
                     {
                         enums = CudEnums.IslemBasarili;
@@ -106,7 +103,7 @@ namespace StokTakibi.BLL.Business_Operations.Stok_Kartlari
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 stokKarti.AktifMi = false;
-                int result = stokKartlariDAL.StokKartiSil(stokKarti);
+                int result = dalStokKartlari.StokKartiSil(stokKarti);
                 if (result > 0)
                 {
                     enums = CudEnums.IslemBasarili;

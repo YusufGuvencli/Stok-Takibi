@@ -47,8 +47,8 @@
     <Compile Include="Business Operations\KullaniciBll.cs" />
     <Compile Include="Business Operations\Raporlar\StokHareketRaporBll.cs" />
     <Compile Include="Business Operations\Stok Kartlari\StokKartlariBll.cs" />
-    <Compile Include="Business Operations\StokHareketleriBLL.cs" />
-    <Compile Include="Business Operations\StokHareketTipiBLL.cs" />
+    <Compile Include="Business Operations\StokHareketleriBll.cs" />
+    <Compile Include="Business Operations\StokHareketTipiBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

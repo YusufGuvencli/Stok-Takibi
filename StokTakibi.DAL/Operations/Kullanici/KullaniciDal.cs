@@ -11,12 +11,12 @@ namespace StokTakibi.DAL.Operations.Kullanici
 {
     public class KullaniciDal
     {
-        StokContext context;
+        StokContext _context;
         UnitOfWorkBase _uow;
         public KullaniciDal()
         {
-            context = new StokContext();
-            _uow = new UnitOfWorkBase(context);
+            _context = new StokContext();
+            _uow = new UnitOfWorkBase(_context);
         }
         /// <summary>
         /// Girilen şifreyi decode ederek kontrol eder. Giriş başarılı ise kullanıcı ID'si döner.

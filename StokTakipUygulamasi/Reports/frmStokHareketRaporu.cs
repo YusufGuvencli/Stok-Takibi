@@ -15,25 +15,21 @@ namespace StokTakipUygulamasi.Reports
 {
     public partial class frmStokHareketRaporu : DevExpress.XtraEditors.XtraForm
     {
-        StokHareketRaporBll stokHareketBll;
+        StokHareketRaporBll bllStokHareket;
         public frmStokHareketRaporu()
         {
+            bllStokHareket = new StokHareketRaporBll();
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             rptStokHareket rpt = new rptStokHareket();
-            rpt.DataSource = stokHareketBll.StokHareketRaporuGetir();
+            rpt.DataSource = bllStokHareket.StokHareketRaporuGetir();
             
         }
 
         private void kaydetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void yazdırToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rptStokHareket rpt = new rptStokHareket();
             rpt.Print();

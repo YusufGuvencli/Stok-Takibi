@@ -136,17 +136,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\frmStokDurumRaporu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmStokDurumRaporu.Designer.cs">
+      <DependentUpon>frmStokDurumRaporu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmStokHareketRaporu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\frmStokHareketRaporu.Designer.cs">
       <DependentUpon>frmStokHareketRaporu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptGenerator.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Reports\rptStokDurum.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptGenerator.Designer.cs">
-      <DependentUpon>rptGenerator.cs</DependentUpon>
+    <Compile Include="Reports\rptStokDurum.Designer.cs">
+      <DependentUpon>rptStokDurum.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptStokHareket.cs">
       <SubType>Component</SubType>
@@ -186,11 +192,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\frmStokDurumRaporu.resx">
+      <DependentUpon>frmStokDurumRaporu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmStokHareketRaporu.resx">
       <DependentUpon>frmStokHareketRaporu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptGenerator.resx">
-      <DependentUpon>rptGenerator.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptStokDurum.resx">
+      <DependentUpon>rptStokDurum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptStokHareket.resx">
       <DependentUpon>rptStokHareket.cs</DependentUpon>

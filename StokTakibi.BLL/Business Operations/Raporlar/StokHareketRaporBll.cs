@@ -12,10 +12,10 @@ namespace StokTakibi.BLL.Business_Operations.Raporlar
 {
     public class StokHareketRaporBll
     {
-        StokHareketRaporuDal stokHareketRaporu;
+        StokHareketRaporuDal dalStokHareketRaporu;
         public StokHareketRaporBll()
         {
-            stokHareketRaporu = new StokHareketRaporuDal();
+            dalStokHareketRaporu = new StokHareketRaporuDal();
         }
 
         public IEnumerable<StokHareketleriRaporDto> StokHareketRaporuGetir()
@@ -24,7 +24,7 @@ namespace StokTakibi.BLL.Business_Operations.Raporlar
 
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                lstStokHareketleri = stokHareketRaporu.StokHareketRaporuGetir();
+                lstStokHareketleri = dalStokHareketRaporu.StokHareketRaporuGetir();
             }, MethodBase.GetCurrentMethod().Name);
 
             return lstStokHareketleri;

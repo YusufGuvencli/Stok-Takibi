@@ -8,12 +8,12 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
 {
     public partial class frmStokKartlari : DevExpress.XtraEditors.XtraForm
     {
-        StokKartlariBll stokKartlariBLL;
+        StokKartlariBll bllStokKarti;
         int kullaniciId;
         public frmStokKartlari(int _kullaniciId)
         {
             InitializeComponent();
-            stokKartlariBLL = new StokKartlariBll();
+            bllStokKarti = new StokKartlariBll();
             kullaniciId = _kullaniciId;
 
         }
@@ -26,7 +26,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
         }
         private void StokKartlariGetir()
         {
-            gridControl1.DataSource = stokKartlariBLL.StokKartlariGetir();
+            gridControl1.DataSource = bllStokKarti.StokKartlariGetir();
         }
         private void frmStokKartlari_Load(object sender, EventArgs e)
         {
@@ -54,7 +54,7 @@ namespace StokTakipUygulamasi.Forms.Stok_Karti
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StokKartiDto stokKarti = (StokKartiDto)gridView1.GetRow(gridView1.FocusedRowHandle);           
-            CudEnums enums = stokKartlariBLL.StokKartiSil(stokKarti);
+            CudEnums enums = bllStokKarti.StokKartiSil(stokKarti);
             FormHelpers.ShowMessage(enums);
             StokKartlariGetir();
         }

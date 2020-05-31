@@ -5,19 +5,16 @@ using StokTakibi.Helper.Enums;
 using StokTakibi.Helper.TryCatch;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StokTakibi.BLL.Business_Operations
 {
-    public class StokHareketleriBLL
+    public class StokHareketleriBll
     {
-        StokHareketDal stokHareketDal;
-        public StokHareketleriBLL()
+        StokHareketDal dalStokHareket;
+        public StokHareketleriBll()
         {
-            stokHareketDal = new StokHareketDal();
+            dalStokHareket = new StokHareketDal();
         }
         /// <summary>
         /// IEnumerable olarak stok hareket listesini döner.
@@ -29,7 +26,7 @@ namespace StokTakibi.BLL.Business_Operations
             IEnumerable<StokHareketView> lstStokHareketleri = null;
             DynamicTryCatch.TryCatchLogla(() =>
             {
-                lstStokHareketleri = stokHareketDal.StokHareketleriniGetir();
+                lstStokHareketleri = dalStokHareket.StokHareketleriniGetir();
             }, MethodBase.GetCurrentMethod().Name);
             return lstStokHareketleri;
         }
@@ -49,7 +46,7 @@ namespace StokTakibi.BLL.Business_Operations
                 && stokHareketleri.StokKartId != -1
                 && stokHareketleri.KullaniciId != 0)
             {
-                int result = stokHareketDal.StokHareketiEkle(stokHareketleri);
+                int result = dalStokHareket.StokHareketiEkle(stokHareketleri);
                 if (result > 0)
                 {
                     enums = CudEnums.IslemBasarili;
@@ -82,7 +79,7 @@ namespace StokTakibi.BLL.Business_Operations
                     && stokHareketleri.StokKartId != -1
                     && stokHareketleri.KullaniciId != 0)
                 {
-                    int result = stokHareketDal.StokHareketiGuncelle(stokHareketleri);
+                    int result = dalStokHareket.StokHareketiGuncelle(stokHareketleri);
                     if (result > 0)
                     {
                         enums = CudEnums.IslemBasarili;
@@ -108,7 +105,7 @@ namespace StokTakibi.BLL.Business_Operations
             DynamicTryCatch.TryCatchLogla(() =>
             {
                 stokHareketleri.AktifMi = false;
-                int result = stokHareketDal.StokHareketiSil(stokHareketleri);
+                int result = dalStokHareket.StokHareketiSil(stokHareketleri);
                 if (result > 0)
                 {
                     enums = CudEnums.IslemBasarili;
@@ -129,7 +126,7 @@ namespace StokTakibi.BLL.Business_Operations
             StokHareketleriDto stokHareketleriDto = null;
             DynamicTryCatch.TryCatchLogla(() => 
             {
-                stokHareketleriDto = stokHareketDal.StokHareketiBul(Id);
+                stokHareketleriDto = dalStokHareket.StokHareketiBul(Id);
             }, MethodBase.GetCurrentMethod().Name);
 
             return stokHareketleriDto;

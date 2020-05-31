@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using StokTakipUygulamasi.Forms.Depo;
 using StokTakipUygulamasi.Forms.Stok_Karti;
 using StokTakipUygulamasi.Forms.Stok_Hareketleri;
+using StokTakipUygulamasi.Reports;
 
 namespace StokTakipUygulamasi.Forms
 {
@@ -44,6 +45,18 @@ namespace StokTakipUygulamasi.Forms
         {
             frmStokHareketleri frmStok = new frmStokHareketleri(kullaniciId);
             frmStok.Show();
+        }
+
+        private void stokHareketRaporuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStokHareketRaporu frmStokHareketRaporu = new frmStokHareketRaporu();
+            frmStokHareketRaporu.ShowDialog();
+        }
+
+        private void stokDurumRaporuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStokDurumRaporu frmStokDurumRaporu = new frmStokDurumRaporu();
+            frmStokDurumRaporu.ShowDialog();
         }
     }
 }

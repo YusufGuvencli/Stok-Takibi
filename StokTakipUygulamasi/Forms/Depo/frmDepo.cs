@@ -10,13 +10,13 @@ namespace StokTakipUygulamasi.Forms.Depo
 {
     public partial class frmDepo : DevExpress.XtraEditors.XtraForm
     {
-        DepoBll depoBLL;
-        DepoDto depoDto;
+        DepoBll bllDepo;
+        DepoDto dtoDepo;
         public frmDepo()
         {
             InitializeComponent();
             DepolariGetir();
-            depoBLL = new DepoBll();
+            bllDepo = new DepoBll();
         }
 
         #region Methods 
@@ -29,10 +29,10 @@ namespace StokTakipUygulamasi.Forms.Depo
 
         private void DepoDuzenle()
         {
-            depoBLL = new DepoBll();
-            depoDto.DepoAdi = txtDepoAdi.Text;
-            depoDto.DepoKodu = txtDepoKodu.Text;
-            CudEnums enums = depoBLL.DepoDuzenle(depoDto);
+            bllDepo = new DepoBll();
+            dtoDepo.DepoAdi = txtDepoAdi.Text;
+            dtoDepo.DepoKodu = txtDepoKodu.Text;
+            CudEnums enums = bllDepo.DepoDuzenle(dtoDepo);
             FormHelpers.ShowMessage(enums);
             DepolariGetir();
             FormHelpers.ClearTextboxes(this.Controls);
@@ -40,14 +40,14 @@ namespace StokTakipUygulamasi.Forms.Depo
 
         public void DepoKaydet()
         {
-            depoBLL = new DepoBll();
+            bllDepo = new DepoBll();
             DepoDto depoDto = new DepoDto()
             {
                 DepoAdi = txtDepoAdi.Text,
                 DepoKodu = txtDepoKodu.Text,
                 AktifMi = true
             };
-            CudEnums enums = depoBLL.DepoEkle(depoDto);
+            CudEnums enums = bllDepo.DepoEkle(depoDto);
 
             FormHelpers.ShowMessage(enums);
             DepolariGetir();
@@ -56,9 +56,9 @@ namespace StokTakipUygulamasi.Forms.Depo
 
         private void DepoSil()
         {
-            depoDto = new DepoDto();
-            depoDto = (DepoDto)gridView1.GetRow(gridView1.FocusedRowHandle);
-            CudEnums enums = depoBLL.DepoSil(depoDto);
+            dtoDepo = new DepoDto();
+            dtoDepo = (DepoDto)gridView1.GetRow(gridView1.FocusedRowHandle);
+            CudEnums enums = bllDepo.DepoSil(dtoDepo);
             FormHelpers.ShowMessage(enums);
             DepolariGetir();
         }
@@ -76,13 +76,13 @@ namespace StokTakipUygulamasi.Forms.Depo
 
         private void DuzenleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            depoDto = new DepoDto();
+            dtoDepo = new DepoDto();
             if (gridView1.SelectedRowsCount == 1)
             {
                 düzenlemeyiKaydetToolStripMenuItem.Visible = true;
-                depoDto = (DepoDto)gridView1.GetRow(gridView1.FocusedRowHandle);
-                txtDepoAdi.Text = depoDto.DepoAdi;
-                txtDepoKodu.Text = depoDto.DepoKodu;
+                dtoDepo = (DepoDto)gridView1.GetRow(gridView1.FocusedRowHandle);
+                txtDepoAdi.Text = dtoDepo.DepoAdi;
+                txtDepoKodu.Text = dtoDepo.DepoKodu;
             }
             else if (gridView1.SelectedRowsCount > 1)
             {
@@ -96,6 +96,7 @@ namespace StokTakipUygulamasi.Forms.Depo
         private void düzenlemeyiKaydetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DepoDuzenle();
+            düzenlemeyiKaydetToolStripMenuItem.Visible = false;
         }
 
         private void silToolStripMenuItem1_Click(object sender, EventArgs e)

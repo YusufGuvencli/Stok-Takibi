@@ -208,6 +208,7 @@ C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\bin\Debug\es
 C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\bin\Debug\ja\DevExpress.Diagram.v19.2.Core.resources.dll
 C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\bin\Debug\ru\DevExpress.Diagram.v19.2.Core.resources.dll
 C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\bin\Debug\DevExpress.RichEdit.v19.2.Export.dll
-C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\obj\Debug\StokTakipUygulamasi.Reports.rptGenerator.resources
 C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\obj\Debug\StokTakipUygulamasi.Reports.rptStokHareket.resources
 C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\obj\Debug\StokTakipUygulamasi.Reports.frmStokHareketRaporu.resources
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\obj\Debug\StokTakipUygulamasi.Reports.frmStokDurumRaporu.resources
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakipUygulamasi\obj\Debug\StokTakipUygulamasi.Reports.rptStokDurum.resources

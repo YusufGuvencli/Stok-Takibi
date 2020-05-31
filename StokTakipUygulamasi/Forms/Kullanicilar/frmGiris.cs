@@ -8,7 +8,7 @@ namespace StokTakipUygulamasi.Forms.Users
 {
     public partial class GirisFormu : DevExpress.XtraEditors.XtraForm
     {
-        KullaniciBll kullaniciBLL;
+        KullaniciBll bllKullanici;
         public GirisFormu()
         {
             InitializeComponent();
@@ -31,8 +31,8 @@ namespace StokTakipUygulamasi.Forms.Users
                 Sifre = txtSifre.Text
             };
 
-            kullaniciBLL = new KullaniciBll();
-            int kullaniciId = kullaniciBLL.KullaniciGiris(kullanici);
+            bllKullanici = new KullaniciBll();
+            int kullaniciId = bllKullanici.KullaniciGiris(kullanici);
 
             if (kullaniciId > 0)
             {
