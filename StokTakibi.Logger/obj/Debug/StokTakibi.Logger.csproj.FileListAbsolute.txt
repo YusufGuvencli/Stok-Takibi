@@ -1,0 +1,10 @@
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\bin\Debug\NLog.config
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\bin\Debug\StokTakibi.Logger.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\bin\Debug\StokTakibi.Logger.pdb
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\bin\Debug\NLog.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\bin\Debug\NLog.xml
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\obj\Debug\StokTakibi.Logger.csprojAssemblyReference.cache
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\obj\Debug\StokTakibi.Logger.csproj.CoreCompileInputs.cache
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\obj\Debug\StokTakibi.Logger.csproj.CopyComplete
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\obj\Debug\StokTakibi.Logger.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Logger\obj\Debug\StokTakibi.Logger.pdb

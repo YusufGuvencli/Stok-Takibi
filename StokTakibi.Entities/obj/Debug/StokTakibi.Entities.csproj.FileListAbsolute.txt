@@ -1,0 +1,8 @@
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\bin\Debug\StokTakibi.Entities.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\bin\Debug\StokTakibi.Entities.pdb
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\obj\Debug\StokTakibi.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\obj\Debug\StokTakibi.Entities.csproj.CopyComplete
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\obj\Debug\StokTakibi.Entities.dll
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\obj\Debug\StokTakibi.Entities.pdb
+C:\Users\Yusuf\source\repos\StokTakipUygulamasi\StokTakibi.Entities\obj\Debug\StokTakibi.Entities.csprojAssemblyReference.cache

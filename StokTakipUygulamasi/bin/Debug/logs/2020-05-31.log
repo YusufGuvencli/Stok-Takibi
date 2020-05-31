@@ -1,0 +1,3 @@
+2020-05-31 09:51:57.2009 ERROR The model backing the 'StokContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269). Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Remove
+2020-05-31 09:54:04.4745 ERROR Procedure or function 'Insert_Stok_Hareket_Tipi' expects parameter '@AktifMi', which was not supplied. Hata alinan metot : InsertWithProcedure
+2020-05-31 09:54:06.4218 ERROR Procedure or function 'Insert_Stok_Hareket_Tipi' expects parameter '@AktifMi', which was not supplied. Hata alinan metot : InsertWithProcedure

@@ -1,0 +1,18 @@
+2020-05-30 10:34:14.8307 ERROR The model backing the 'StokContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269). Hata alinan metot : StokTakibi.DAL.EntitiyFramework.Repository.Any
+2020-05-30 12:35:37.1978 ERROR Validation failed for one or more entities. See 'EntityValidationErrors' property for more details. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-30 15:55:43.8947 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : SqlQuery
+2020-05-30 15:55:45.2289 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokTakibi.DAL.EntitiyFramework.UnitOfWork.Commit
+2020-05-30 17:39:16.3994 ERROR Invalid column name 'StokHareketleri_HareketId'. Hata alinan metot : SqlQuery
+2020-05-30 17:40:36.4493 ERROR There is already an object named 'Insert_StokHareketleri' in the database. Hata alinan metot : SqlQuery
+2020-05-30 17:51:15.3247 ERROR Procedure or function 'Insert_Depo' expects parameter '@DepoKodu', which was not supplied. Hata alinan metot : InsertWithProcedure
+2020-05-30 17:51:53.7255 ERROR Procedure or function 'Insert_Depo' expects parameter '@DepoKodu', which was not supplied. Hata alinan metot : InsertWithProcedure
+2020-05-30 18:10:59.0521 ERROR Could not find stored procedure 'Insert_Kullanici'. Hata alinan metot : InsertWithProcedure
+2020-05-30 18:44:40.8561 ERROR There is already an object named 'Insert_Kullanici' in the database. Hata alinan metot : SqlQuery
+2020-05-30 18:46:15.5021 ERROR There is already an object named 'Insert_Kullanici' in the database. Hata alinan metot : SqlQuery
+2020-05-30 20:51:48.8043 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 20:52:31.6300 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 20:53:33.3716 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 20:56:44.8793 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 21:01:59.9458 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 21:03:40.6165 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
+2020-05-30 21:07:07.5623 ERROR The operation cannot be completed because the DbContext has been disposed. Hata alinan metot : StokKartlariGetir
